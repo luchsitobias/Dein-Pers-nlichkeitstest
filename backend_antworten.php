@@ -7,6 +7,8 @@ if(!isset($_SESSION['id'])){
   $admin_id = $_SESSION['id'];
 }
 
+
+
 require_once ('system/data.php');
 require_once ('system/security.php');
 
@@ -46,7 +48,7 @@ $success_msg = "";
     <div class="container content">
         <div class="row">
             <div class="col-md-offset-10 col-md-2 navigation">
-                <button href="login.php" class="btn btn-default">Auslogggen</button>
+                <button href="index.php" class="btn btn-default">Auslogggen</button>
             </div>
             <div class="col-md-12 navigation">
                     <ul class="nav nav-tabs ">

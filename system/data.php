@@ -54,5 +54,4 @@ function get_insert_result($sql)
 
 
 
-
  ?>
