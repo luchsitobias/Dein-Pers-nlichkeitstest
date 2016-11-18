@@ -23,36 +23,38 @@
 /*   **************************************************************** */
 
 
-function get_insert_result($sql)
-{
-  $db = get_db_connection();
-  // echo $sql;
-  $result = mysqli_query($db, $sql);
-  $last_id = mysqli_query($db);
-  mysqli_close();
-  return $last_id;
-}
+  function get_insert_result($sql)
+  {
+    $db = get_db_connection();
+    echo $sql;
+    $result = mysqli_query($db, $sql);
+    $last_id = mysqli_query($db);
+    mysqli_close();
+    return $last_id;
+  }
+
+  function register($nachname, $vorname, $geburtsdatum, $email)
+  {
+    $sql = "INSERT INTO user (nachname, vorname, geburtsdatum, email) VALUES ('$nachname', '$vorname', '$geburtsdatum', '$email');";
+    return get_insert_result($sql);
+  }
 
 /* *****************************************************************************
 /* Login login.php
 /* ************************************************************************** */
 
-function login($email, $password)
+  function login($email, $password)
   {
     $sql = "SELECT * FROM admin WHERE email = '$email' AND password = '$password';";
     return get_result($sql);
     echo $sql;
   }
-    function register($nachname, $vorname, $geburtsdatum, $email)
-{
-    $sql = "INSERT INTO user (nachname, vorname, geburtsdatum, email) VALUES ('$nachname', '$vorname', '$geburtsdatum', '$email');";
-  	return get_insert_result($sql);
-}
 
 
-    /* *****************************************************************************
-    /* Fragen umfrage.php
-    /* ************************************************************************** */
+
+/* *****************************************************************************
+/* Fragen umfrage.php
+/* ************************************************************************** */
 
 
 function get_fragen($f_id)
