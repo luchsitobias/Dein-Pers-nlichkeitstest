@@ -78,7 +78,7 @@ if(isset($_POST['register-submit'])){
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-theme.css" rel="stylesheet">
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="css/layout.css" rel="stylesheet"> 
+    <link href="css/layout.css" rel="stylesheet">
 
 
 </head>
@@ -122,17 +122,17 @@ if(isset($_POST['register-submit'])){
                         <!--Nachname-->
                         <div class="form-group">
                             <label for="InputNachname">Nachname</label>
-                            <input type="text" class="" id="nachname" placeholder="Nachname">
+                            <input type="text" name="nachname" class="" id="nachname" placeholder="Nachname">
                         </div>
                         <!--Geburtsdatum-->
                         <div class="form-group">
                             <label for="InputGeburtsdatum">Geburtsdatum</label>
-                            <input type="date" class="" id="geburtsdatum" placeholder="tt.mm.jjjj">
+                            <input type="date" name="geburtsdatum" class="" id="geburtsdatum" placeholder="tt.mm.jjjj">
                         </div>
                         <!--eMail-->
                         <div class="form-group">
                             <label for="InputEmail">E-Mail Adresse</label>
-                            <input type="email" class="" id="email" placeholder="E-Mail">
+                            <input type="email" name="email" class="" id="email" placeholder="E-Mail">
                         </div>
                         <div>
                             <a href="umfrage.php"><button id="start" type="button" class="">Start</button></a>
