@@ -1,67 +1,40 @@
 <?php
-session_start();
-if(isset($_SESSION['id'])) unset ($_SESSION['id']);
-session_destroy();
+  session_start();
+  if(isset($_SESSION['id'])) unset ($_SESSION['id']);
+  session_destroy();
 
-require_once ('system/data.php');
-require_once ('system/security.php');
+  require_once ('system/data.php');
+  require_once ('system/security.php');
 
-$db = get_db_connection();
+  $db = get_db_connection();
 
-$error = false;
-$error_msg = "";
-$success = false;
-$success_msg = "";
+  $error = false;
+  $error_msg = "";
+  $success = false;
+  $success_msg = "";
 
-if(isset($_POST['start'])){
-  if (!empty($_POST['vorname']) && !empty($_POST['nachname']) && !empty($_POST['geburtsdatum']) && !empty($_POST['email'])) {
-    $vorname = filter_data($_POST['vorname']);
-    $nachname = filter_data($_POST['nachname']);
-    $geburtsdatum = filter_data($_POST['geburtsdatum']);
-    $email = filter_data($_POST['email']);
-    $register_id = register($vorname, $nachname, $geburtsdatum, $email);
-    $success = true;
+  if(isset($_POST['start'])){
+    if (!empty($_POST['vorname']) && !empty($_POST['nachname']) && !empty($_POST['geburtsdatum']) && !empty($_POST['email'])) {
+      $vorname = filter_data($_POST['vorname']);
+      $nachname = filter_data($_POST['nachname']);
+      $geburtsdatum = filter_data($_POST['geburtsdatum']);
+      $email = filter_data($_POST['email']);
+      $register_id = register($vorname, $nachname, $geburtsdatum, $email);
+      $success = true;
 
-    session_start();
-    $_SESSION['id'] = $register_id;
-    header("Location:umfrage.php");
-  }else {
-    $error = true;
-    $error_msg .= "Leider ist ein Fehler aufgetrete, bitte versuche es später nochmal.<br/>";
-  }
-}else {
-  $error = true;
-  $error_msg .= "Bitte fülle alle Felder aus.<br/>";
-}
-
-
-/*
-if(isset($_POST['register-submit'])){
-    if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirm-password'])){
-        $email = filter_data($_POST['email']);
-        $password = filter_data($_POST['password']);
-        $password_confirm = filter_data($_POST['confirm-password']);
-      if($password == $password_confirm){
-        $register_id = register($email, $password);
-        $success = true;
-        //$success_msg .= "Sie haben sich erfolgreich mit der ID $register_id registriert.<br/>";
-        //$success_msg .= "Bitte loggen Sie sich jetzt ein.<br/>";
-
-        session_start();
-        $_SESSION['id'] = $register_id;
-        header("Location:home.php");
-
-      }else{
-        $error = true;
-        $error_msg .= "Bitte überprüfen Sie die Passworteingabe.<br/>";
-      }
+      session_start();
+      $_SESSION['id'] = $register_id;
+      header("Location:umfrage.php");
     }else {
       $error = true;
-      $error_msg .= "Bitte füllen Sie alle Felder aus.<br/>";
+      $error_msg .= "Leider ist ein Fehler aufgetrete, bitte versuche es später nochmal.<br/>";
     }
+  }else {
+    $error = true;
+    $error_msg .= "Bitte fülle alle Felder aus.<br/>";
   }
-*/
- ?>
+
+?>
 <!DOCTYPE html>
 <html lang="de">
 
