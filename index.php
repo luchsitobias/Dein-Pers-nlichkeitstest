@@ -22,14 +22,15 @@ if(isset($_POST['start'])){
     session_start();
     $_SESSION['id'] = $register_id;
     header("Location:umfrage.php");
-    }else {
-      $error = true;
-      $error_msg .= "Es ist ein Fehler aufgetreten, bitte versuche es später erneut.";
-    }else {
+  }else {
     $error = true;
-    $error_msg .= "Bitte fülle alle Felder aus.";
+    $error_msg .= "Leider konnten wir Ihre E-Mailadresse oder ihr Passwort nicht finden.<br/>";
   }
+}else {
+  $error = true;
+  $error_msg .= "Bitte füllen Sie beide Felder aus.<br/>";
 }
+
 
 /*
 if(isset($_POST['register-submit'])){
@@ -133,14 +134,25 @@ if(isset($_POST['register-submit'])){
                             <input type="email" name="email" class="" id="email" placeholder="E-Mail">
                         </div>
                         <div>
-                            <a href="umfrage.php"><button id="start" type="button" class="">Start</button></a>
+                            <button href="umfrage.php" name="start" type="button" class="">Start</button>
                         </div>
-                        <div style="margin-top:10%;" class="alert alert-danger" role="alert">Bitte fülle alle Felder korrekt aus</div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <?php
+      if($error == true) {
+    ?>
+      <div class="col-md-12">
+        <div class="col-md-offset-3 col-md-6" >
+          <div style="margin-top:10%;" class="alert alert-danger" role="alert"><?php echo $error_msg; ?></div>
+        </div>
+      </div>
+    <?php
+      }
+    ?>
 
 
     <!-- jQuery -->
