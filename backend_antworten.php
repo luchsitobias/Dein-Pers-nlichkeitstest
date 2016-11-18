@@ -49,6 +49,7 @@ $success_msg = "";
         <div class="row">
             <div class="col-md-offset-10 col-md-2 navigation">
                 <button href="index.php" class="btn btn-default">Auslogggen</button>
+
             </div>
             <div class="col-md-12 navigation">
                     <ul class="nav nav-tabs ">
@@ -68,7 +69,6 @@ $success_msg = "";
                             </a>
                         </li>
                     </ul>
-            </div>
             </div>
         </div>
     </div>

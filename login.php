@@ -100,7 +100,7 @@ if(isset($_POST['login_submit'])){
                                     <div class="col-sm-offset-2 col-sm-10">
                                     <div class="checkbox">
                                         <label>
-                                        <input type="checkbox"> Eingaben speichern>
+                                        <input type="checkbox"> Eingaben speichern
                                         </label>
                                     </div>
                                     </div>
@@ -119,7 +119,17 @@ if(isset($_POST['login_submit'])){
         </div>
     </div>
 </div>
-
+<?php
+  if($error == true) {
+?>
+  <div class="col-md-12">
+    <div class="col-md-offset-3 col-md-6" >
+      <div style="margin-top:10%;" class="alert alert-danger" role="alert"><?php echo $error_msg; ?></div>
+    </div>
+  </div>
+<?php
+  }
+?>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
