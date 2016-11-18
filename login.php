@@ -26,7 +26,7 @@ if(isset($_POST['login_submit'])){
       $admin = mysqli_fetch_assoc($result);
       session_start();
       $_SESSION['id'] = $admin ['admin_id'];
-      header("Location:index.php");
+      header("Location:backend_resultate.php");
     }else {
       $error = true;
       $error_msg .= "Leider konnten wir Ihre E-Mailadresse oder ihr Passwort nicht finden.<br/>";
