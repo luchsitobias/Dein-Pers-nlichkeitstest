@@ -26,7 +26,7 @@ if(isset($_POST['login_submit'])){
       $admin = mysqli_fetch_assoc($result);
       session_start();
       $_SESSION['id'] = $admin ['admin_id'];
-      //header("Location:index.php");
+      header("Location:index.php");
     }else {
       $error = true;
       $error_msg .= "Leider konnten wir Ihre E-Mailadresse oder ihr Passwort nicht finden.<br/>";
@@ -100,7 +100,7 @@ if(isset($_POST['login_submit'])){
                                     <div class="col-sm-offset-2 col-sm-10">
                                     <div class="checkbox">
                                         <label>
-                                        <input type="checkbox"> Eingaben speichern
+                                        <input type="checkbox"> Eingaben speichern>
                                         </label>
                                     </div>
                                     </div>
@@ -108,7 +108,6 @@ if(isset($_POST['login_submit'])){
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
                                     <button href="backend_auswerten.php" type="submit" name="login_submit" class="">Anmelden</button>
-                                    <button href="backend_resultate.php" type="submit" class="">Anmelden</button>
                                     </div>
                                 </div>
                                 <div style="margin-top:10%;" class="alert alert-danger" role="alert">Bitte fülle alle Felder korrekt aus</div>

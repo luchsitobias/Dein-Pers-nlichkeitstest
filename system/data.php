@@ -10,9 +10,9 @@
     function get_result($sql)
     {
       $db = get_db_connection();
-      echo $sql;
+    //  echo $sql;
       $result = mysqli_query($db, $sql);
-      mysqli_connect();
+      mysqli_close($db);
       return $result;
     }
 
@@ -41,6 +41,7 @@ function get_insert_result($sql)
     {
       $sql = "SELECT * FROM admin WHERE email = '$email' AND password = '$password';";
       return get_result($sql);
+      echo $sql;
     }
 
 
