@@ -37,14 +37,14 @@ $success_msg = "";
     <!--Home Button-->
     <div class="container content">
         <div class="row">
-
-            <!--Home Button-->
-            <div class="col-md-1">
-                <div id="login" class="btn-group">
-                  <a href="index.php"><button  type="button" class="">Home</button></a>
+            <div class="col-md-12">
+                <!--Home Button-->
+                <div class="col-md-1">
+                    <div id="login" class="btn-group">
+                      <a href="index.php"><button  type="button" class="">Home</button></a>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 
