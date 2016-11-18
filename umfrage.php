@@ -9,6 +9,10 @@ $success_msg = "";
 
 $result = get_fragen($f_id);
 
+while ($frage) {
+    $n_frage = get_fragen();
+}
+
  ?>
 
 <!DOCTYPE html>

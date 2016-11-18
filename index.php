@@ -103,8 +103,9 @@
                             <input type="email" name="email" class="" id="email" placeholder="E-Mail">
                         </div>
                         <div>
-                            <input type="submit" name="start" class="" value="Start">
+                            <input type="submit" name="start" class="button" value="Start">
                         </div>
+
                     </form>
                 </div>
             </div>
@@ -115,13 +116,14 @@
       if($error == true) {
     ?>
       <div class="col-md-12">
-        <div class="col-md-offset-3 col-md-6" >
+        <div class="col-md-offset-1 col-md-5" >
           <div style="margin-top:10%;" class="alert alert-danger" role="alert"><?php echo $error_msg; ?></div>
         </div>
       </div>
     <?php
       }
     ?>
+
 
 
     <!-- jQuery -->

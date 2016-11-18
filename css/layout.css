@@ -45,6 +45,36 @@ button:hover {
     text-decoration: none;
 }
 
+.button {
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    border-radius: 12px;
+    border: 2px solid white;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    padding: 6px 12px;
+    margin-top: 5%;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+
+}
+
+.button:hover {
+    background-color: white;
+    color: skyblue;
+    text-decoration: none;
+}
 
 /*Startseite*/
 
