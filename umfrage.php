@@ -7,6 +7,7 @@ $error_msg = "";
 $success = false;
 $success_msg = "";
 
+$result = get_fragen($f_id);
 
  ?>
 

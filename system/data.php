@@ -23,6 +23,7 @@
 /*   **************************************************************** */
 
 
+
   function get_insert_result($sql)
   {
     $db = get_db_connection();
@@ -39,16 +40,19 @@
     return get_insert_result($sql);
   }
 
+
 /* *****************************************************************************
 /* Login login.php
 /* ************************************************************************** */
 
-  function login($email, $password)
-  {
-    $sql = "SELECT * FROM admin WHERE email = '$email' AND password = '$password';";
-    return get_result($sql);
-    echo $sql;
-  }
+
+    function login($email, $password)
+    {
+      $sql = "SELECT * FROM admin WHERE email = '$email' AND password = '$password';";
+      return get_result($sql);
+      echo $sql;
+    }
+
 
 
 

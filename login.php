@@ -119,6 +119,7 @@ if(isset($_POST['login_submit'])){
         </div>
     </div>
 </div>
+
 <?php
   if($error == true) {
 ?>
