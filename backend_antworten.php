@@ -48,7 +48,7 @@ $success_msg = "";
     <div class="container content">
         <div class="row">
             <div class="col-md-offset-10 col-md-2 navigation">
-                <button href="index.php" class="btn btn-default">Auslogggen</button>
+                <a href="index.php" class="btn btn-default">Auslogggen</a>
 
             </div>
             <div class="col-md-12 navigation">

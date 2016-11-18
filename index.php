@@ -1,8 +1,4 @@
 <?php
-  session_start();
-  if(isset($_SESSION['id'])) unset ($_SESSION['id']);
-  session_destroy();
-
   require_once ('system/data.php');
   require_once ('system/security.php');
 
@@ -29,9 +25,6 @@
       $error = true;
       $error_msg .= "Leider ist ein Fehler aufgetrete, bitte versuche es später nochmal.<br/>";
     }
-  }else {
-    $error = true;
-    $error_msg .= "Bitte fülle alle Felder aus.<br/>";
   }
 
 ?>
@@ -88,7 +81,7 @@
             <!--Inputfelder-->
             <div class="col-md-12">
                 <div class="col-md-offset-1 col-md-5" style="padding-top:3%;">
-                    <form>
+                    <form action="index.php" method="post">
                         <!--Vorname-->
                         <div class="form-group">
                             <label for="InputVorname">Vorname</label>
@@ -110,7 +103,7 @@
                             <input type="email" name="email" class="" id="email" placeholder="E-Mail">
                         </div>
                         <div>
-                            <button href="umfrage.php" name="start" type="button" class="">Start</button>
+                            <input type="submit" name="start" class="" value="Start">
                         </div>
                     </form>
                 </div>
