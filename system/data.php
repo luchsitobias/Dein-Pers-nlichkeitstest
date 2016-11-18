@@ -7,9 +7,10 @@
         return $db;
     }
 
-    function get_result()
+    function get_result($sql)
     {
       $db = get_db_connection();
+      echo $sql;
       $result = mysqli_query($db, $sql);
       mysqli_connect();
       return $result;
@@ -22,7 +23,7 @@
 /*   **************************************************************** */
 
 
-function get_insert_result()
+function get_insert_result($sql)
 {
   $db = get_db_connection();
   // echo $sql;

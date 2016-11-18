@@ -13,7 +13,7 @@ $error_msg = "";
 $success = false;
 $success_msg = "";
 
-if(isset($_POST['submit'])){
+if(isset($_POST['login_submit'])){
   if(!empty($_POST['email']) && !empty($_POST['password'])){
     $email = filter_data($_POST['email']);
     $password = filter_data($_POST['password']);
@@ -25,8 +25,8 @@ if(isset($_POST['submit'])){
     if($row_count == 1){
       $admin = mysqli_fetch_assoc($result);
       session_start();
-      $_SESSION['id'] = $admin['admin_id'];
-      header("Location:index.php");
+      $_SESSION['id'] = $admin ['admin_id'];
+      //header("Location:index.php");
     }else {
       $error = true;
       $error_msg .= "Leider konnten wir Ihre E-Mailadresse oder ihr Passwort nicht finden.<br/>";
@@ -83,17 +83,17 @@ if(isset($_POST['submit'])){
                     <div class="col-md-offset-3 col-md-6" style="padding-top:10%;">
                         <h1 style="padding-bottom:10%;"> LOGIN </h1>
 
-                                <form class="form-horizontal">
+                                <form class="form-horizontal" action="login.php" method="post">
                                 <div class="form-group">
                                     <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                                     <div class="col-sm-8">
-                                    <input type="email" class="" id="inputEmail3" placeholder="Email">
+                                    <input type="email" name="email" class="" id="inputEmail3" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="">
                                     <label for="inputPassword3" class="col-sm-2 control-label">Passwort </label>
                                     <div class="col-sm-8">
-                                    <input type="password" class="" id="inputPassword3" placeholder="Passwort">
+                                    <input type="password" name="password" class="" id="inputPassword3" placeholder="Passwort">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -107,7 +107,7 @@ if(isset($_POST['submit'])){
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
-                                    <button href="backend_auswerten.php" type="submit" class="">Anmelden</button>
+                                    <button href="backend_auswerten.php" type="submit" name="login_submit" class="">Anmelden</button>
                                     </div>
                                 </div>
                                 <div style="margin-top:10%;" class="alert alert-danger" role="alert">Bitte fülle alle Felder korrekt aus</div>
