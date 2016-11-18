@@ -29,7 +29,7 @@ function get_insert_result($sql)
   // echo $sql;
   $result = mysqli_query($db, $sql);
   $last_id = mysqli_query($db);
-  mysqli_close();
+  mysqli_connect();
   return $last_id;
 }
 
@@ -37,22 +37,18 @@ function get_insert_result($sql)
 /* Login login.php
 /* ************************************************************************** */
 
-function login($email, $password)
-  {
-    $sql = "SELECT * FROM admin WHERE email = '$email' AND password = '$password';";
-    return get_result($sql);
-    echo $sql;
-  }
-    function register($nachname, $vorname, $geburtsdatum, $email)
-{
-    $sql = "INSERT INTO user (nachname, vorname, geburtsdatum, email) VALUES ('$nachname', '$vorname', '$geburtsdatum', '$email');";
-  	return get_insert_result($sql);
-}
+    function login($email, $password)
+    {
+      $sql = "SELECT * FROM admin WHERE email = '$email' AND password = '$password';";
+      return get_result($sql);
+      echo $sql;
+    }
 
 
-    /* *****************************************************************************
-    /* Fragen umfrage.php
-    /* ************************************************************************** */
+
+/* *****************************************************************************
+/* Fragen umfrage.php
+/* ************************************************************************** */
 
 
 function get_fragen($f_id)
