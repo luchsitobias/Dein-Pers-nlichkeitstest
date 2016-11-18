@@ -20,7 +20,7 @@ $success_msg = "";
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Backend - Auswerten</title>
+    <title>Backend - Resultate </title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -78,7 +78,6 @@ $success_msg = "";
                             <th>Anteil Resultat 2</th>
                             <th>Anteil Resultat 3</th>
                             <th>Anteil Resultat 4</th>
-                            <th>Löschen</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -88,7 +87,6 @@ $success_msg = "";
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td><button class="btn btn-default">Löschen</button></td>
                         </tr>
                         <tr>
                             <th scope="row">sl.ravasio@hispeed.ch</th>
@@ -96,7 +94,6 @@ $success_msg = "";
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td><button class="btn btn-default">Löschen</button></td>
                         </tr>
                         <tr>
                             <th scope="row">sl.ravasio@hispeed.ch</th>
@@ -104,7 +101,6 @@ $success_msg = "";
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td><button class="btn btn-default">Löschen</button></td>
                         </tr>
                     </tbody>
                 </table>

@@ -57,7 +57,7 @@ input {
     background-color: white;
     font-size: 14px;
     padding: 5px 10px;
-    color: black;
+    color: black; !important
     border: 2px solid white;
     border-radius: 12px;
     -webkit-transition-duration: 0.4s; /* Safari */

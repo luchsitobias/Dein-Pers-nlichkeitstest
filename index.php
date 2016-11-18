@@ -78,7 +78,7 @@ if(isset($_POST['register-submit'])){
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-theme.css" rel="stylesheet">
     <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="css/layout.css" rel="stylesheet">
+    <link href="css/layout.css" rel="stylesheet"> 
 
 
 </head>
