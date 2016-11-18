@@ -108,6 +108,7 @@ if(isset($_POST['login_submit'])){
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
                                     <button href="backend_auswerten.php" type="submit" name="login_submit" class="">Anmelden</button>
+                                    <button href="backend_resultate.php" type="submit" class="">Anmelden</button>
                                     </div>
                                 </div>
                                 <div style="margin-top:10%;" class="alert alert-danger" role="alert">Bitte fülle alle Felder korrekt aus</div>

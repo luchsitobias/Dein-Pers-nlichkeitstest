@@ -41,7 +41,7 @@ $success_msg = "";
             <!--Home Button-->
             <div class="col-md-1">
                 <div id="login" class="btn-group">
-                  <a href="index.html"><button  type="button" class="">Home</button></a>
+                  <a href="index.php"><button  type="button" class="">Home</button></a>
                 </div>
             </div>
 

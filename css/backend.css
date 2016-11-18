@@ -1,0 +1,16 @@
+.navigation {
+  padding-top:5%;
+}
+
+.tabelle {
+  padding-top:10%;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: white;
+  background-color: black;
+}

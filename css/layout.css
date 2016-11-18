@@ -36,7 +36,7 @@ button {
           user-select: none;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
-    
+
 }
 
 button:hover {
@@ -57,7 +57,7 @@ input {
     background-color: white;
     font-size: 14px;
     padding: 5px 10px;
-    color: white;
+    color: black;
     border: 2px solid white;
     border-radius: 12px;
     -webkit-transition-duration: 0.4s; /* Safari */
@@ -67,9 +67,9 @@ input {
 /*Berufe*/
 
 .berufe {
-    height:500px; 
-    background-color:white; 
-    background: url(images/bg.jpg) no-repeat center center fixed; 
+    height:500px;
+    background-color:white;
+    background: url(images/bg.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -122,7 +122,7 @@ input {
     border: 2px solid white;
     border-radius: 12px;
     width: 200px;
-    height: auto;    
+    height: auto;
 }
 
 /*Startseite*/
