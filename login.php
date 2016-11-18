@@ -1,11 +1,41 @@
 <?php
+session_start();
+  if(isset($_SESSION['id'])) unset($_SESSION['id']);
+  session_destroy();
+
 require_once ('system/data.php');
 require_once ('system/security.php');
+
+$db = get_db_connection();
 
 $error = false;
 $error_msg = "";
 $success = false;
 $success_msg = "";
+
+if(isset($_POST['submit'])){
+  if(!empty($_POST['email']) && !empty($_POST['password'])){
+    $email = filter_data($_POST['email']);
+    $password = filter_data($_POST['password']);
+
+    $result = login($email, $password);
+
+    $row_count = mysqli_num_rows($result);
+
+    if($row_count == 1){
+      $admin = mysqli_fetch_assoc($result);
+      session_start();
+      $_SESSION['id'] = $admin['admin_id'];
+      header("Location:index.php");
+    }else {
+      $error = true;
+      $error_msg .= "Leider konnten wir Ihre E-Mailadresse oder ihr Passwort nicht finden.<br/>";
+    }
+  }else {
+    $error = true;
+    $error_msg .= "Bitte füllen Sie beide Felder aus.<br/>";
+  }
+}
 
  ?>
 

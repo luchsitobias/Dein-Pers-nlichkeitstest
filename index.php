@@ -10,6 +10,55 @@ $error_msg = "";
 $success = false;
 $success_msg = "";
 
+if(isset($_POST['start'])){
+  if (!empty($_POST['vorname']) && !empty($_POST['nachname']) && !empty($_POST['geburtsdatum']) && !empty($_POST['email'])) {
+    $vorname = filter_data($_POST['vorname']);
+    $nachname = filter_data($_POST['nachname']);
+    $geburtsdatum = filter_data($_POST['geburtsdatum']);
+    $email = filter_data($_POST['email']);
+    if (condition) {
+      $register_id = register($email, $password);
+      $success = true;
+
+      session_start();
+      $_SESSION['id'] = $register_id;
+      header("Location:umfrage.php");
+    }else {
+      $error = true;
+      $error_msg .= "Es ist ein Fehler aufgetreten, bitte versuche es später erneut.";
+    }
+  }else {
+    $error = true;
+    $error_msg .= "Bitte fülle alle Felder aus.";
+  }
+}
+
+/*
+if(isset($_POST['register-submit'])){
+    if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['confirm-password'])){
+        $email = filter_data($_POST['email']);
+        $password = filter_data($_POST['password']);
+        $password_confirm = filter_data($_POST['confirm-password']);
+      if($password == $password_confirm){
+        $register_id = register($email, $password);
+        $success = true;
+        //$success_msg .= "Sie haben sich erfolgreich mit der ID $register_id registriert.<br/>";
+        //$success_msg .= "Bitte loggen Sie sich jetzt ein.<br/>";
+
+        session_start();
+        $_SESSION['id'] = $register_id;
+        header("Location:home.php");
+
+      }else{
+        $error = true;
+        $error_msg .= "Bitte überprüfen Sie die Passworteingabe.<br/>";
+      }
+    }else {
+      $error = true;
+      $error_msg .= "Bitte füllen Sie alle Felder aus.<br/>";
+    }
+  }
+*/
  ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -68,25 +117,25 @@ $success_msg = "";
                         <!--Vorname-->
                         <div class="form-group">
                             <label for="InputVorname">Vorname</label>
-                            <input type="text" name="vorname" class="" id="" placeholder="Vorname">
+                            <input type="text" name="vorname" class="" id="vorname" placeholder="Vorname">
                         </div>
                         <!--Nachname-->
                         <div class="form-group">
                             <label for="InputNachname">Nachname</label>
-                            <input type="text" class="" id="" placeholder="Nachname">
+                            <input type="text" class="" id="nachname" placeholder="Nachname">
                         </div>
                         <!--Geburtsdatum-->
                         <div class="form-group">
                             <label for="InputGeburtsdatum">Geburtsdatum</label>
-                            <input type="date" class="" id="" placeholder="tt.mm.jjjj">
+                            <input type="date" class="" id="geburtsdatum" placeholder="tt.mm.jjjj">
                         </div>
                         <!--eMail-->
                         <div class="form-group">
                             <label for="InputEmail">E-Mail Adresse</label>
-                            <input type="email" class="" id="" placeholder="E-Mail">
+                            <input type="email" class="" id="email" placeholder="E-Mail">
                         </div>
                         <div>
-                            <a href="umfrage.php"><button type="button" class="">Start</button></a>
+                            <a href="umfrage.php"><button id="start" type="button" class="">Start</button></a>
                         </div>
                         <div style="margin-top:10%;" class="alert alert-danger" role="alert">Bitte fülle alle Felder korrekt aus</div>
                     </form>
