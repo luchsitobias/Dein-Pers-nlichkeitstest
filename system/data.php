@@ -46,10 +46,16 @@ function get_insert_result($sql)
 
 
 
+    /* *****************************************************************************
+    /* Fragen umfrage.php
+    /* ************************************************************************** */
 
 
-
-
+function get_fragen($f_id)
+{
+  $sql = "SELECT * FROM fragen WHERE f_id = $f_id;";
+  return get_result($sql);
+}
 
 
 
