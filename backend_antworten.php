@@ -37,26 +37,28 @@ $success_msg = "";
     <!--Navigation-->
     <div class="container content">
         <div class="row">
-            <div class="col-md-12">
-
-                <ul class="nav nav-tabs navigation">
-                    <li>
-                        <a href="backend_resultate.php" role="button" aria-haspopup="true" aria-expanded="false">
-                            Resultate <span class=""></span>
-                        </a>
-                    </li>
-                    <li role="">
-                        <a href="backend_fragen.php" role="button" aria-haspopup="true" aria-expanded="false">
-                            Fragen <span class=""></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="backend_antworten.php" role="button" aria-haspopup="true" aria-expanded="false">
-                            Antworten<span class=""></span>
-                        </a>
-                    </li>
-                </ul>
-
+            <div class="col-md-offset-10 col-md-2 navigation">
+                <button href="login.php" class="btn btn-default">Auslogggen</button>
+            </div>
+            <div class="col-md-12 navigation">
+                    <ul class="nav nav-tabs ">
+                        <li>
+                            <a href="backend_resultate.php" role="button" aria-haspopup="true" aria-expanded="false">
+                                Resultate <span class=""></span>
+                            </a>
+                        </li>
+                        <li role="">
+                            <a href="backend_fragen.php" role="button" aria-haspopup="true" aria-expanded="false">
+                                Fragen <span class=""></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="backend_antworten.php" role="button" aria-haspopup="true" aria-expanded="false">
+                                Antworten<span class=""></span>
+                            </a>
+                        </li>
+                    </ul>
+            </div>
             </div>
         </div>
     </div>

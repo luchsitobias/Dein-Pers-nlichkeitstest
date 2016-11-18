@@ -7,14 +7,19 @@
 }
 
 a {
-  color: black;
+  color: black; !important
 }
 
-a:hover {
-  color: white;
+a:hover
+a:active {
+  color: white; !important
   background-color: black; !important
 }
 
 .texteingabe {
   width: 100%;
+}
+
+.breite {
+  width: auto;
 }
