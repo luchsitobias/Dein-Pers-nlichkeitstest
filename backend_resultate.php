@@ -2,10 +2,11 @@
 
 session_start();
 if(!isset($_SESSION['id'])){
-  header("Location:login.php");
+  header("Location:index.php");
 }else{
   $admin_id = $_SESSION['id'];
 }
+
 
 require_once ('system/data.php');
 require_once ('system/security.php');
@@ -43,10 +44,19 @@ $success_msg = "";
 <body>
 
     <!--Navigation-->
+
+<li> <a=href="index.php"> Logout </a> </li>
+
+
     <div class="container content">
         <div class="row">
             <div class="col-md-offset-10 col-md-2 navigation">
                 <button href="index.php" class="btn btn-default">Ausloggen</button>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-10 col-md-2 navigation">
+                <button href="index.php">Ausloggen</button>
+                </div>
             </div>
             <div class="col-md-12 navigation">
                     <ul class="nav nav-tabs ">
