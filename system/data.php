@@ -16,9 +16,17 @@
     }
 
 
+    /* *****************************************************************************
+    /* Login login.php
+    /* ************************************************************************** */
 
+    function login($email, $password)
+    {
+      $sql = "SELECT * FROM user WHERE email = '$email' AND password = '$password';";
+      return get_result($sql);
+    }
 
-
+    
 
 
 

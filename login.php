@@ -2,6 +2,8 @@
 require_once ('system/data.php');
 require_once ('system/security.php');
 
+$db = get_db_connection();
+
 $error = false;
 $error_msg = "";
 $success = false;
