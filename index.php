@@ -16,8 +16,8 @@ if(isset($_POST['start'])){
     $nachname = filter_data($_POST['nachname']);
     $geburtsdatum = filter_data($_POST['geburtsdatum']);
     $email = filter_data($_POST['email']);
-    if (condition) {
-      $register_id = register($email, $password);
+    if (condition) {  // Fragen was hineingehört, da kein password == password_confirm
+      $register_id = register($vorname, $nachname, $geburtsdatum, $email);
       $success = true;
 
       session_start();
