@@ -16,18 +16,16 @@ if(isset($_POST['start'])){
     $nachname = filter_data($_POST['nachname']);
     $geburtsdatum = filter_data($_POST['geburtsdatum']);
     $email = filter_data($_POST['email']);
-    if (condition) {  // Fragen was hineingehört, da kein password == password_confirm
-      $register_id = register($vorname, $nachname, $geburtsdatum, $email);
-      $success = true;
+    $register_id = register($vorname, $nachname, $geburtsdatum, $email);
+    $success = true;
 
-      session_start();
-      $_SESSION['id'] = $register_id;
-      header("Location:umfrage.php");
+    session_start();
+    $_SESSION['id'] = $register_id;
+    header("Location:umfrage.php");
     }else {
       $error = true;
       $error_msg .= "Es ist ein Fehler aufgetreten, bitte versuche es später erneut.";
-    }
-  }else {
+    }else {
     $error = true;
     $error_msg .= "Bitte fülle alle Felder aus.";
   }
