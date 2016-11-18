@@ -78,7 +78,7 @@ $success_msg = "";
                     </ul>
             </div>
         </div>
-    </div>y
+    </div>
 
     <!--Tabelle-->
     <div class="container content">

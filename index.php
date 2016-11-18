@@ -27,11 +27,11 @@ if(isset($_POST['start'])){
     header("Location:umfrage.php");
   }else {
     $error = true;
-    $error_msg .= "Leider konnten wir Ihre E-Mailadresse oder ihr Passwort nicht finden.<br/>";
+    $error_msg .= "Leider ist ein Fehler aufgetrete, bitte versuche es später nochmal.<br/>";
   }
 }else {
   $error = true;
-  $error_msg .= "Bitte füllen Sie beide Felder aus.<br/>";
+  $error_msg .= "Bitte fülle alle Felder aus.<br/>";
 }
 
 
