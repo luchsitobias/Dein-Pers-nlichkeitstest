@@ -110,7 +110,7 @@ if(isset($_POST['login_submit'])){
                                     <button href="backend_auswerten.php" type="submit" name="login_submit" class="">Anmelden</button>
                                     </div>
                                 </div>
-                                <div style="margin-top:10%;" class="alert alert-danger" role="alert"/div>
+                                <div style="margin-top:10%;"</div>
                                 </form>
 
                         </div>
