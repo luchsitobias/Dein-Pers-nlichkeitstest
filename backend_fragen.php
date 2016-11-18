@@ -1,4 +1,12 @@
 <?php
+
+session_start();
+if(!isset($_SESSION['id'])){
+  header("Location:login.php");
+}else{
+  $admin_id = $_SESSION['id'];
+}
+
 require_once ('system/data.php');
 require_once ('system/security.php');
 
