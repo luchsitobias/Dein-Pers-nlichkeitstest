@@ -23,7 +23,7 @@
       header("Location:umfrage.php");
     }else {
       $error = true;
-      $error_msg .= "Leider ist ein Fehler aufgetrete, bitte versuche es später nochmal.<br/>";
+      $error_msg .= "Bitte fülle alle Felder aus.<br/>";
     }
   }
 
