@@ -22,11 +22,11 @@
 
     function login($email, $password)
     {
-      $sql = "SELECT * FROM user WHERE email = '$email' AND password = '$password';";
+      $sql = "SELECT * FROM admin WHERE email = '$email' AND password = '$password';";
       return get_result($sql);
     }
 
-    
+
 
 
 
