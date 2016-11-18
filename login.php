@@ -100,7 +100,7 @@ if(isset($_POST['login_submit'])){
                                     <div class="col-sm-offset-2 col-sm-10">
                                     <div class="checkbox">
                                         <label>
-                                        <input type="checkbox"> Eingaben speichern>
+                                        <input type="checkbox"> Eingaben speichern
                                         </label>
                                     </div>
                                     </div>

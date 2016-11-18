@@ -38,7 +38,7 @@ $success_msg = "";
     <div class="container content">
         <div class="row">
             <div class="col-md-offset-10 col-md-2 navigation">
-                <button href="login.php" class="btn btn-default">Auslogggen</button>
+                <button href="login.php" class="btn btn-default">Ausloggen</button>
             </div>
             <div class="col-md-12 navigation">
                     <ul class="nav nav-tabs ">
@@ -59,9 +59,8 @@ $success_msg = "";
                         </li>
                     </ul>
             </div>
-            </div>
         </div>
-    </div>
+    </div>y
 
     <!--Tabelle-->
     <div class="container content">
