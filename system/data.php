@@ -16,8 +16,20 @@
     }
 
 
+/*   **************************************************************** */
+/*    index.php
+/*   **************************************************************** */
 
 
+function get_insert_result()
+{
+  $db = get_db_connection();
+  // echo $sql;
+  $result = mysqli_query($db, $sql);
+  $last_id = mysqli_query($db);
+  mysqli_connect();
+  return $last_id;
+}
 
 
 
