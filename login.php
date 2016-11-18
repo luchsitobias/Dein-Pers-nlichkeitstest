@@ -1,4 +1,8 @@
 <?php
+session_start();
+  if(isset($_SESSION['id'])) unset($_SESSION['id']);
+  session_destroy();
+
 require_once ('system/data.php');
 require_once ('system/security.php');
 
@@ -9,7 +13,7 @@ $error_msg = "";
 $success = false;
 $success_msg = "";
 
-if(isset($_POST['login-submit'])){
+if(isset($_POST['submit'])){
   if(!empty($_POST['email']) && !empty($_POST['password'])){
     $email = filter_data($_POST['email']);
     $password = filter_data($_POST['password']);
@@ -22,7 +26,7 @@ if(isset($_POST['login-submit'])){
       $admin = mysqli_fetch_assoc($result);
       session_start();
       $_SESSION['id'] = $admin['admin_id'];
-      header("Location:home.php");
+      header("Location:index.php");
     }else {
       $error = true;
       $error_msg .= "Leider konnten wir Ihre E-Mailadresse oder ihr Passwort nicht finden.<br/>";
