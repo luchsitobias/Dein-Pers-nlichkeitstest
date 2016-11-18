@@ -16,6 +16,7 @@
     }
 
 
+
 /*   **************************************************************** */
 /*    index.php
 /*   **************************************************************** */
@@ -30,6 +31,18 @@ function get_insert_result()
   mysqli_connect();
   return $last_id;
 }
+
+/* *****************************************************************************
+/* Login login.php
+/* ************************************************************************** */
+
+    function login($email, $password)
+    {
+      $sql = "SELECT * FROM admin WHERE email = '$email' AND password = '$password';";
+      return get_result($sql);
+    }
+
+
 
 
 

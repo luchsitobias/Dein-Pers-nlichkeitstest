@@ -2,10 +2,36 @@
 require_once ('system/data.php');
 require_once ('system/security.php');
 
+$db = get_db_connection();
+
 $error = false;
 $error_msg = "";
 $success = false;
 $success_msg = "";
+
+if(isset($_POST['login-submit'])){
+  if(!empty($_POST['email']) && !empty($_POST['password'])){
+    $email = filter_data($_POST['email']);
+    $password = filter_data($_POST['password']);
+
+    $result = login($email, $password);
+
+    $row_count = mysqli_num_rows($result);
+
+    if($row_count == 1){
+      $admin = mysqli_fetch_assoc($result);
+      session_start();
+      $_SESSION['id'] = $admin['admin_id'];
+      header("Location:home.php");
+    }else {
+      $error = true;
+      $error_msg .= "Leider konnten wir Ihre E-Mailadresse oder ihr Passwort nicht finden.<br/>";
+    }
+  }else {
+    $error = true;
+    $error_msg .= "Bitte füllen Sie beide Felder aus.<br/>";
+  }
+}
 
  ?>
 
@@ -39,47 +65,52 @@ $success_msg = "";
             <div class="col-md-12">
 
                 <!--Home Button-->
-                <div class="col-md-1">
-                    <div id="home">
-                      <a href="index.html"><button  type="button" class="">Home</button></a>
+                <div class="col-md-12">
+                    <div class="col-md-1">
+                        <div id="home">
+                          <a href="index.php"><button  type="button" class="">Home</button></a>
+                        </div>
                     </div>
                 </div>
 
 
                 <!--Inputfelder-->
-                <div class="col-md-offset-3 col-md-6" style="padding-top:10%;">
-                    <h1> LOGIN </h1>
+                <div class="col-md-12">
+                    <div class="col-md-offset-3 col-md-6" style="padding-top:10%;">
+                        <h1 style="padding-bottom:10%;"> LOGIN </h1>
 
-                            <form class="form-horizontal">
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                                <div class="col-sm-8">
-                                <input type="email" class="" id="inputEmail3" placeholder="Email">
+                                <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                                    <div class="col-sm-8">
+                                    <input type="email" class="" id="inputEmail3" placeholder="Email">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="">
-                                <label for="inputPassword3" class="col-sm-2 control-label">Passwort </label>
-                                <div class="col-sm-8">
-                                <input type="password" class="" id="inputPassword3" placeholder="Passwort">
+                                <div class="">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">Passwort </label>
+                                    <div class="col-sm-8">
+                                    <input type="password" class="" id="inputPassword3" placeholder="Passwort">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                <div class="checkbox">
-                                    <label>
-                                    <input type="checkbox"> Eingaben speichern
-                                    </label>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                    <div class="checkbox">
+                                        <label>
+                                        <input type="checkbox"> Eingaben speichern
+                                        </label>
+                                    </div>
+                                    </div>
                                 </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                    <button href="backend_auswerten.php" type="submit" class="">Anmelden</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="">Anmelden</button>
-                                </div>
-                            </div>
-                            </form>
+                                <div style="margin-top:10%;" class="alert alert-danger" role="alert">Bitte fülle alle Felder korrekt aus</div>
+                                </form>
 
                         </div>
+                    </div>
 
         </div>
     </div>
