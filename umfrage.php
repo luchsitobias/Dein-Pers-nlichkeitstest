@@ -69,7 +69,7 @@ $result = get_fragen();
 
 
                         <!--Antworten-->
-                        <div style="padding-top:5%;">
+                        
         <?php
         while($antwort = mysqli_fetch_assoc($antworten)){
         ?>
