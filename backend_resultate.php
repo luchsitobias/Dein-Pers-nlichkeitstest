@@ -15,6 +15,30 @@ $error_msg = "";
 $success = false;
 $success_msg = "";
 
+if(isset($_POST['delete'])){
+  if (!empty($_POST['text'])) {
+    $user = filter_data($_POST['user_id']);
+    $kat_1 = filter_data($_POST['anteil_kat_1']);
+    $kat_2 = filter_data($_POST['anteil_kat_2']);
+    $kat_3 = filter_data($_POST['anteil_kat_3']);
+    $kat_4 = filter_data($_POST['anteil_kat_4']);
+
+    //$delete = delete_fragen($text, $f_id);
+    $success = true;
+    $success_msg .= "Erfolgreich gespeichert";
+
+
+  }else {
+    $error = true;
+    $error_msg .= "Bitte fülle etwas aus.<br/>";
+  }
+}
+
+
+
+$result = show_ergebnis();
+
+
  ?>
 
 <!DOCTYPE html>
@@ -79,41 +103,40 @@ $success_msg = "";
                 <h2>Resultate</h2>
 
                 <!--Tabelle-->
+                <?php
+                  if($error == true) {
+                ?>
+                    <div class="col-md-offset-3 col-md-6" >
+                      <div style="margin-top:10%;" class="alert alert-danger" role="alert"><?php echo $error_msg; ?></div>
+                    </div>
+                <?php
+                  }
+                ?>
+                <?php
+                  if($success == true) {
+                ?>
+                    <div class="col-md-offset-3 col-md-6" >
+                      <div style="margin-top:10%;" class="alert alert-success" role="alert"><?php echo $success_msg; ?></div>
+                    </div>
+                <?php
+                  }
+                ?>
                 <table class="table table-bordered ">
-                    <thead>
+                <?php   while($ergebnis = mysqli_fetch_assoc($result)){?>
+                          <!--Inputfelder-->
+                      <!--Fragen-->
+                      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                         <tr>
-                            <th>User</th>
-                            <th>Anteil Resultat 1</th>
-                            <th>Anteil Resultat 2</th>
-                            <th>Anteil Resultat 3</th>
-                            <th>Anteil Resultat 4</th>
+                          <th style="width:200px;" scope="row">User ID <?php echo $ergebnis['user_id']?></th>
+                          <td style="width:100px;"><p><?php echo $ergebnis['anteil_kat_1']?>%</p></td>
+                          <td style="width:100px;"><p><?php echo $ergebnis['anteil_kat_2']?>%</p></td>
+                          <td style="width:100px;"><p><?php echo $ergebnis['anteil_kat_3']?>%</p></td>
+                          <td style="width:100px;"><p><?php echo $ergebnis['anteil_kat_4']?>%</p></td>
+                          <td><input type="submit" name="delete" class="" value="Löschen"></td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">sl.ravasio@hispeed.ch</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">sl.ravasio@hispeed.ch</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">sl.ravasio@hispeed.ch</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-
+                      </form>
+                  <?php } ?>
+                  </table>
         </div>
     </div>
 </div>

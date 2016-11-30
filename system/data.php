@@ -84,7 +84,7 @@
 
 
   /* *****************************************************************************
-  /* fragen_backend.php
+  /* backend_fragen.php
   /* ************************************************************************** */
 
   function show_fragen()
@@ -100,7 +100,7 @@
   }
 
   /* *****************************************************************************
-  /* fragen_backend.php
+  /* backend_antworten.php
   /* ************************************************************************** */
   function show_antworten()
   {
@@ -113,5 +113,32 @@
     $sql = "UPDATE antworten SET antwort = '$text' WHERE a_id = $a_id;";
     return get_result($sql);
   }
+
+  /* *****************************************************************************
+  /* backend_ergebnis.php
+  /* ************************************************************************** */
+
+  function show_ergebnis()
+  {
+    $sql = "SELECT * FROM resultat;";
+    return get_result($sql);
+  }
+
+  function show_emailadresse()
+  {
+    $sql = "SELECT email FROM user;";
+    return get_result($sql);
+  }
+
+/*
+  function delete_resultat($text, $a_id)
+  {
+    $sql = "UPDATE antworten SET antwort = '$text' WHERE a_id = $a_id;";
+    return get_result($sql);
+  }
+
+*/
+
+
 
  ?>
