@@ -61,11 +61,15 @@ $result = get_fragen();
             <div class="col-md-offset-2 col-md-8" style="padding-top:10%;">
 
                 <!--Fragen-->
+
+                <div class="radio">
+
                         <h1>FRAGE <?php echo $frage['f_id']?></h1>
                         <p><?php echo $frage['frage']?></p>
 
+
                         <!--Antworten-->
-                        <div style="padding-top:5%;">
+                        
         <?php
         while($antwort = mysqli_fetch_assoc($antworten)){
         ?>
