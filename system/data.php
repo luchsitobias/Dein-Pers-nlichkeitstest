@@ -50,8 +50,6 @@
     {
       $sql = "SELECT * FROM admin WHERE email = '$email' AND password = '$password';";
       return get_result($sql);
-      echo $sql;
-
     }
 
 
@@ -62,10 +60,16 @@
 /* ************************************************************************** */
 
 
-  function get_fragen($f_id, $frage)
+  function get_fragen()
   {
-    $sql = "SELECT frage, f_id FROM fragen;";
-    echo $sql;
+    $sql = "SELECT * FROM fragen;";
+    return get_result($sql);
+  }
+
+  function get_antworten($f_id)
+  {
+    $sql = "SELECT * FROM antworten WHERE f_id = $f_id;";
+    return get_result($sql);
   }
 
 
@@ -74,7 +78,30 @@
   /* *****************************************************************************
   /* fragen_backend.php
   /* ************************************************************************** */
+  function show_fragen()
+  {
+    $db = get_db_connection();
+    $id=array();
+    $frage=array();
+
+    $sql = "SELECT * FROM fragen;";
+    $result = mysqli_query($sql, $db) or die();
+
+    while ($row = mysqli_fetch_object($db))
+    {
+    array_push($id,$row->f_id);
+    array_push($frage,$row->frage);
+    }
+    echo $sql;
+  }
 
 
+/*
+  function show_fragen()
+  {
+    $sql = "SELECT * FROM fragen;";
+    echo $sql;
+  }
 
+*/
  ?>
