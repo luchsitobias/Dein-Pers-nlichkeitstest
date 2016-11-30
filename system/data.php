@@ -50,7 +50,6 @@
     {
       $sql = "SELECT * FROM admin WHERE email = '$email' AND password = '$password';";
       return get_result($sql);
-      echo $sql;
     }
 
 
@@ -61,10 +60,16 @@
 /* ************************************************************************** */
 
 
-  function get_fragen($f_id, $frage)
+  function get_fragen()
   {
-    $sql = "SELECT frage, f_id FROM fragen;";
-    echo $sql;
+    $sql = "SELECT * FROM fragen;";
+    return get_result($sql);
+  }
+
+  function get_antworten($f_id)
+  {
+    $sql = "SELECT * FROM antworten WHERE f_id = $f_id;";
+    return get_result($sql);
   }
 
 

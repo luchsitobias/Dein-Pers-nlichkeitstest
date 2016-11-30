@@ -7,11 +7,7 @@ $error_msg = "";
 $success = false;
 $success_msg = "";
 
-$result = get_fragen($f_id, $frage);
-
-while ($frage) {
-    $n_frage = get_fragen();
-}
+$result = get_fragen();
 
  ?>
 
@@ -57,44 +53,38 @@ while ($frage) {
         <div class="row">
             <div class="col-md-12">
 
+    <?php
+    while($frage = mysqli_fetch_assoc($result)){
+        $antworten = get_antworten($frage['f_id']);
+    ?>
             <!--Inputfelder-->
             <div class="col-md-offset-2 col-md-8" style="padding-top:10%;">
 
                 <!--Fragen-->
-                        <h1>FRAGE 1</h1>
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                        <h1>FRAGE <?php echo $frage['f_id']?></h1>
+                        <p><?php echo $frage['frage']?></p>
 
-                <div class="radio">
+
 
                         <!--Antworten-->
                         <div style="padding-top:5%;">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
-                            Option one is this and that&mdash;be sure to include why it's great
-                        </label>
-                        </div>
+        <?php
+        while($antwort = mysqli_fetch_assoc($antworten)){
+        ?>
                         <div class="radio">
                         <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                            Option two can be something else and selecting it will deselect option one
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+                            <?php echo $antwort['antwort']?>
                         </label>
                         </div>
-                        <div class="radio disabled">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-                            Option three is disabled
-                        </label>
-                        </div>
-                        <div class="radio disabled">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-                            Option three is disabled
-                        </label>
-                        </div>
+        <?php } ?>
 
                 </div>
 
             </div>
+            <?php
+            }
+            ?>
 
                     <!--Buttons-->
                     <div class="col-md-12" style="padding-top:10%;">
