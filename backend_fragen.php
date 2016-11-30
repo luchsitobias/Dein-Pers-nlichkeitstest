@@ -77,25 +77,24 @@ $result = show_fragen();
         <div class="row">
             <div class="col-md-12 tabelle">
 
-                <!--Titel 1-->
-                <h2>Fragen bearbeiten</h2>
+              <!--Titel 1-->
+              <h2>Fragen bearbeiten</h2>
               <?php   while($frage = mysqli_fetch_assoc($result)){?>
                         <!--Inputfelder-->
 
-                <table class="table table-bordered ">
-                            <!--Fragen-->
-                            <tr>
-                                <th style="width:100px;" scope="row">FRAGE <?php echo $frage['f_id']?></th>
-                                <td style="width:750px;"><p><?php echo $frage['frage']?></p></td>
-                                <td style="width:750px;" class="breite"><input type="text" placeholder="Text" class="texteingabe"></td>
-                                <td><button>Speichern</button></td>
-                            </tr>
-              <?php } ?>
-        </table>
-
+              <table class="table table-bordered ">
+                    <!--Fragen-->
+                    <tr>
+                      <th style="width:100px;" scope="row">FRAGE <?php echo $frage['f_id']?></th>
+                      <td style="width:750px;"><p><?php echo $frage['frage']?></p></td>
+                      <td style="width:750px;" class="breite"><input type="text" placeholder="Text" class="texteingabe"></td>
+                      <td><button>Speichern</button></td>
+                    </tr>
+                <?php } ?>
+              </table>
+            </div>
         </div>
     </div>
-</div>
 
 
     <!-- jQuery -->
