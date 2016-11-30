@@ -15,6 +15,8 @@ $error_msg = "";
 $success = false;
 $success_msg = "";
 
+$result = show_fragen();
+
  ?>
 
 <!DOCTYPE html>
@@ -77,7 +79,19 @@ $success_msg = "";
 
                 <!--Titel 1-->
                 <h2>Fragen bearbeiten</h2>
-              <?php echo show_fragen();?>
+              <?php   while($frage = mysqli_fetch_assoc($result)){?>
+                        <!--Inputfelder-->
+
+                <table class="table table-bordered ">
+                            <!--Fragen-->
+                            <tr>
+                                <th scope="row">FRAGE <?php echo $frage['f_id']?></th>
+                                <td><p><?php echo $frage['frage']?></p></td>
+                                <td class="breite"><input type="text" placeholder="Text" class="texteingabe"></td>
+                                <td><button>Speichern</button></td>
+                            </tr>
+              <?php } ?>
+        </table>
                 <!--Tabelle-->
                 <table class="table table-bordered ">
                     <thead>
