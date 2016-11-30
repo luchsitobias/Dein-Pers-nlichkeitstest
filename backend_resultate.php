@@ -1,42 +1,31 @@
 <?php
 
-session_start();
-if(!isset($_SESSION['id'])){
-  header("Location:login.php");
-}else{
-  $admin_id = $_SESSION['id'];
-}
-
-require_once ('system/data.php');
-require_once ('system/security.php');
-
-$error = false;
-$error_msg = "";
-$success = false;
-$success_msg = "";
-
-if(isset($_POST['delete'])){
-  if (!empty($_POST['text'])) {
-    $user = filter_data($_POST['user_id']);
-    $kat_1 = filter_data($_POST['anteil_kat_1']);
-    $kat_2 = filter_data($_POST['anteil_kat_2']);
-    $kat_3 = filter_data($_POST['anteil_kat_3']);
-    $kat_4 = filter_data($_POST['anteil_kat_4']);
-
-    $delete = delete_resultat($user, $kat_1, $kat_2, $kat_3, $kat_4);
-    $success = true;
-    $success_msg .= "Erfolgreich gespeichert";
-
-
-  }else {
-    $error = true;
-    $error_msg .= "Bitte fülle etwas aus.<br/>";
+  session_start();
+  if(!isset($_SESSION['id'])){
+    header("Location:login.php");
+  }else{
+    $admin_id = $_SESSION['id'];
   }
-}
+
+  require_once ('system/data.php');
+  require_once ('system/security.php');
+
+  $error = false;
+  $error_msg = "";
+  $success = false;
+  $success_msg = "";
+
+  if(isset($_POST['delete'])){
+    $user_id = filter_data($_POST['user_id']);
+
+    $delete = delete_resultat($user_id);
+    $success = true;
+    $success_msg .= "Erfolgreich gelöscht";
+  }
 
 
 
-$result = show_ergebnis();
+  $result = show_ergebnis();
 
 
  ?>
@@ -132,6 +121,9 @@ $result = show_ergebnis();
                           <td style="width:100px;"><p><?php echo $ergebnis['anteil_kat_2']?>%</p></td>
                           <td style="width:100px;"><p><?php echo $ergebnis['anteil_kat_3']?>%</p></td>
                           <td style="width:100px;"><p><?php echo $ergebnis['anteil_kat_4']?>%</p></td>
+                          <td>
+                            <input type="hidden" name="user_id" value="<?php echo $ergebnis['user_id']?>">
+                          </td>
                           <td><input type="submit" name="delete" class="" value="Löschen"></td>
                         </tr>
                       </form>
