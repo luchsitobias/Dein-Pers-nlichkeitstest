@@ -23,7 +23,7 @@ if(isset($_POST['delete'])){
     $kat_3 = filter_data($_POST['anteil_kat_3']);
     $kat_4 = filter_data($_POST['anteil_kat_4']);
 
-    //$delete = delete_fragen($text, $f_id);
+    $delete = delete_resultat($user, $kat_1, $kat_2, $kat_3, $kat_4);
     $success = true;
     $success_msg .= "Erfolgreich gespeichert";
 
@@ -127,7 +127,7 @@ $result = show_ergebnis();
                       <!--Fragen-->
                       <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                         <tr>
-                          <th style="width:200px;" scope="row">User ID <?php echo $ergebnis['user_id']?></th>
+                          <th style="width:200px;" scope="row"><?php echo $ergebnis['email']?></th>
                           <td style="width:100px;"><p><?php echo $ergebnis['anteil_kat_1']?>%</p></td>
                           <td style="width:100px;"><p><?php echo $ergebnis['anteil_kat_2']?>%</p></td>
                           <td style="width:100px;"><p><?php echo $ergebnis['anteil_kat_3']?>%</p></td>

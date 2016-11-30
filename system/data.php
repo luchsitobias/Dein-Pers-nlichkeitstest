@@ -120,24 +120,18 @@
 
   function show_ergebnis()
   {
-    $sql = "SELECT * FROM resultat;";
+    $sql = "SELECT resultat.*, user.email FROM resultat LEFT JOIN user USING(user_id);";
     return get_result($sql);
   }
 
-  function show_emailadresse()
-  {
-    $sql = "SELECT email FROM user;";
-    return get_result($sql);
-  }
 
-/*
   function delete_resultat($text, $a_id)
   {
-    $sql = "UPDATE antworten SET antwort = '$text' WHERE a_id = $a_id;";
+    $sql = "DELETE FROM resultat WHERE user_id = $user_id";
     return get_result($sql);
   }
 
-*/
+
 
 
 
