@@ -34,9 +34,9 @@
     return $last_id;
   }
 
-  function register($nachname, $vorname, $geburtsdatum, $email)
+  function register($vorname, $nachname, $geburtsdatum, $email)
   {
-    $sql = "INSERT INTO user (nachname, vorname, geburtsdatum, email) VALUES ('$nachname', '$vorname', '$geburtsdatum', '$email');";
+    $sql = "INSERT INTO user (vorname, nachname, geburtsdatum, email) VALUES ('$vorname', '$nachname', '$geburtsdatum', '$email');";
     return get_insert_result($sql);
   }
 
