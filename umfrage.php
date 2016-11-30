@@ -7,7 +7,7 @@ $error_msg = "";
 $success = false;
 $success_msg = "";
 
-$result = get_fragen($f_id);
+$result = get_fragen($f_id, $frage);
 
 while ($frage) {
     $n_frage = get_fragen();
