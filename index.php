@@ -20,13 +20,13 @@
       $geburtsdatum = filter_data($_POST['geburtsdatum']);
       $email = filter_data($_POST['email']);
       $register_id = register($vorname, $nachname, $geburtsdatum, $email);
-      //$register_id = mysqli_fetch_assoc($result);
+      $register_id = mysqli_fetch_assoc($result);
       echo $register_id;
       $success = true;
 
       session_start();
       $_SESSION['id'] = $register_id;
-      //header("Location:umfrage.php");
+      header("Location:umfrage.php");
     }else {
       $error = true;
       $error_msg .= "Bitte fülle alle Felder aus.<br/>";
