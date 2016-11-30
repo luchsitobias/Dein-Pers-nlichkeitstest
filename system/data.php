@@ -51,6 +51,7 @@
       $sql = "SELECT * FROM admin WHERE email = '$email' AND password = '$password';";
       return get_result($sql);
       echo $sql;
+
     }
 
 
