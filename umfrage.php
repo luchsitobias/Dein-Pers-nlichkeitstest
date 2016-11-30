@@ -70,8 +70,7 @@ $result = get_fragen();
         while($antwort = mysqli_fetch_assoc($antworten)){
         ?>
                         <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
+                        <label><input type="radio" name="optradio">
                             <?php echo $antwort['antwort']?>
                         </label>
                         </div>
