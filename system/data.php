@@ -99,6 +99,19 @@
     return get_result($sql);
   }
 
+  /* *****************************************************************************
+  /* fragen_backend.php
+  /* ************************************************************************** */
+  function show_antworten()
+  {
+    $sql = "SELECT * FROM antworten;";
+    return get_result($sql);
+  }
 
+  function save_antworten($text, $a_id)
+  {
+    $sql = "UPDATE antworten SET antwort = '$text' WHERE a_id = $a_id;";
+    return get_result($sql);
+  }
 
  ?>

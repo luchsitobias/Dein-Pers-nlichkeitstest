@@ -17,6 +17,24 @@ $error_msg = "";
 $success = false;
 $success_msg = "";
 
+if(isset($_POST['save'])){
+  if (!empty($_POST['text'])) {
+    $text = filter_data($_POST['text']);
+    $a_id = filter_data($_POST['a_id']);
+
+    $speichern = save_antworten($text, $a_id);
+    $success = true;
+    $success_msg .= "Erfolgreich gespeichert";
+
+
+  }else {
+    $error = true;
+    $error_msg .= "Bitte fülle etwas aus.<br/>";
+  }
+}
+
+$result = show_antworten();
+
  ?>
 
 <!DOCTYPE html>
@@ -82,44 +100,41 @@ $success_msg = "";
                 <h2>Antworten</h2>
 
                 <!--Tabelle-->
+                <?php
+                  if($error == true) {
+                ?>
+                    <div class="col-md-offset-3 col-md-6" >
+                      <div style="margin-top:10%;" class="alert alert-danger" role="alert"><?php echo $error_msg; ?></div>
+                    </div>
+                <?php
+                  }
+                ?>
+                <?php
+                  if($success == true) {
+                ?>
+                    <div class="col-md-offset-3 col-md-6" >
+                      <div style="margin-top:10%;" class="alert alert-success" role="alert"><?php echo $success_msg; ?></div>
+                    </div>
+                <?php
+                  }
+                ?>
                 <table class="table table-bordered ">
-                    <thead>
+                <?php   while($antwort = mysqli_fetch_assoc($result)){?>
+                          <!--Inputfelder-->
+                      <!--Fragen-->
+                      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                         <tr>
-                            <th>User</th>
-                            <th>Anteil Resultat 1</th>
-                            <th>Anteil Resultat 2</th>
-                            <th>Anteil Resultat 3</th>
-                            <th>Anteil Resultat 4</th>
-                            <th>Löschen</th>
+                          <th style="width:100px;" scope="row">Antwort <?php echo $antwort['a_id']?></th>
+                          <td style="width:750px;"><p><?php echo $antwort['antwort']?></p></td>
+                          <td style="width:750px;" class="breite">
+                            <input type="hidden" name="a_id" value="<?php echo $antwort['a_id']?>">
+                            <input type="text" name="text" placeholder="Text" class="texteingabe">
+                          </td>
+                          <td><input type="submit" name="save" class="" value="Speichern"></td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">sl.ravasio@hispeed.ch</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><button class="btn btn-default">Löschen</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">sl.ravasio@hispeed.ch</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><button class="btn btn-default">Löschen</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">sl.ravasio@hispeed.ch</th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><button class="btn btn-default">Löschen</button></td>
-                        </tr>
-                    </tbody>
-                </table>
+                      </form>
+                  <?php } ?>
+                  </table>
 
         </div>
     </div>
