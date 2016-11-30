@@ -1,35 +1,38 @@
 <?php
 
-session_start();
-if(!isset($_SESSION['id'])){
-  header("Location:login.php");
-}else{
-  $admin_id = $_SESSION['id'];
-}
-
-require_once ('system/data.php');
-require_once ('system/security.php');
-
-$error = false;
-$error_msg = "";
-$success = false;
-$success_msg = "";
-
-if(isset($_POST['save'])){
-  if (!empty($_POST['text'])) {
-    $text = filter_data($_POST['text']);
-    $f_id = filter_data($_POST['f_id']);
-
-    $speichern = save_fragen($text, $f_id);
-    $success = true;
-
-  }else {
-    $error = true;
-    $error_msg .= "Bitte fülle alle Felder aus.<br/>";
+  session_start();
+  if(!isset($_SESSION['id'])){
+    header("Location:login.php");
+  }else{
+    $admin_id = $_SESSION['id'];
   }
-}
 
-$result = show_fragen();
+  require_once ('system/data.php');
+  require_once ('system/security.php');
+
+  $error = false;
+  $error_msg = "";
+  $success = false;
+  $success_msg = "";
+
+  if(isset($_POST['save'])){
+    if (!empty($_POST['text'])) {
+      $text = filter_data($_POST['text']);
+      $f_id = filter_data($_POST['f_id']);
+
+      $speichern = save_fragen($text, $f_id);
+      $success = true;
+      $success_msg .= "Erfolgreich gespeichert";
+
+
+    }else {
+      $error = true;
+      $error_msg .= "Bitte fülle etwas aus.<br/>";
+    }
+  }
+
+  $result = show_fragen();
+
 ?>
 
 <!DOCTYPE html>
@@ -92,7 +95,24 @@ $result = show_fragen();
 
               <!--Titel 1-->
               <h2>Fragen bearbeiten</h2>
-
+              <?php
+                if($error == true) {
+              ?>
+                  <div class="col-md-offset-3 col-md-6" >
+                    <div style="margin-top:10%;" class="alert alert-danger" role="alert"><?php echo $error_msg; ?></div>
+                  </div>
+              <?php
+                }
+              ?>
+              <?php
+                if($success == true) {
+              ?>
+                  <div class="col-md-offset-3 col-md-6" >
+                    <div style="margin-top:10%;" class="alert alert-success" role="alert"><?php echo $success_msg; ?></div>
+                  </div>
+              <?php
+                }
+              ?>
               <table class="table table-bordered ">
               <?php   while($frage = mysqli_fetch_assoc($result)){?>
                         <!--Inputfelder-->
@@ -110,6 +130,7 @@ $result = show_fragen();
                     </form>
                 <?php } ?>
                 </table>
+
             </div>
         </div>
     </div>
