@@ -29,8 +29,8 @@
     $db = get_db_connection();
     echo $sql;
     $result = mysqli_query($db, $sql);
-    $last_id = mysqli_query($db);
-    mysqli_close();
+    $last_id = mysqli_insert_id($db);
+    mysqli_close($db);
     return $last_id;
   }
 

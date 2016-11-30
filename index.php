@@ -1,4 +1,8 @@
 <?php
+  session_start();
+  if (isset($_SESSION['id'])) unset($_SESSION['id']);
+  session_destroy();
+
   require_once ('system/data.php');
   require_once ('system/security.php');
 
@@ -16,11 +20,13 @@
       $geburtsdatum = filter_data($_POST['geburtsdatum']);
       $email = filter_data($_POST['email']);
       $register_id = register($vorname, $nachname, $geburtsdatum, $email);
+      //$register_id = mysqli_fetch_assoc($result);
+      echo $register_id;
       $success = true;
 
       session_start();
       $_SESSION['id'] = $register_id;
-      header("Location:umfrage.php");
+      //header("Location:umfrage.php");
     }else {
       $error = true;
       $error_msg .= "Bitte fülle alle Felder aus.<br/>";
@@ -85,22 +91,22 @@
                         <!--Vorname-->
                         <div class="form-group">
                             <label for="InputVorname">Vorname</label>
-                            <input type="text" name="vorname" class="" id="vorname" placeholder="Vorname">
+                            <input type="text" name="vorname" class="" id="vorname" placeholder="Vorname" value="Urs">
                         </div>
                         <!--Nachname-->
                         <div class="form-group">
                             <label for="InputNachname">Nachname</label>
-                            <input type="text" name="nachname" class="" id="nachname" placeholder="Nachname">
+                            <input type="text" name="nachname" class="" id="nachname" placeholder="Nachname" value="Thöny">
                         </div>
                         <!--Geburtsdatum-->
                         <div class="form-group">
                             <label for="InputGeburtsdatum">Geburtsdatum</label>
-                            <input type="date" name="geburtsdatum" class="" id="geburtsdatum" placeholder="tt.mm.jjjj">
+                            <input type="date" name="geburtsdatum" class="" id="geburtsdatum" placeholder="tt.mm.jjjj" value="01.01.2000">
                         </div>
                         <!--eMail-->
                         <div class="form-group">
                             <label for="InputEmail">E-Mail Adresse</label>
-                            <input type="email" name="email" class="" id="email" placeholder="E-Mail">
+                            <input type="email" name="email" class="" id="email" placeholder="E-Mail" value="urs@thoeny.ch">
                         </div>
                         <div>
                             <input type="submit" name="start" class="" value="Start">

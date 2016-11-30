@@ -1,4 +1,11 @@
 <?php
+session_start();
+if(!isset($_SESSION['id'])){
+  header ("Location:index.php");
+}else{
+  $user_id = $_SESSION['id'];
+}
+
 require_once ('system/data.php');
 require_once ('system/security.php');
 
@@ -6,6 +13,11 @@ $error = false;
 $error_msg = "";
 $success = false;
 $success_msg = "";
+
+foreach($_POST as $key => $value){
+  echo "Key: $key ..... Antwort_id: $value<br>";
+  echo "Schreibe in die DB (Tabelle user_antworten) $user_id und $value";
+}
 
  ?>
 

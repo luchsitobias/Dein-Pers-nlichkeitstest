@@ -1,4 +1,11 @@
 <?php
+session_start(); 
+if(!isset($_SESSION['id'])){
+  header ("Location:index.php");
+}else{
+  $user_id = $_SESSION['id'];
+}
+
 require_once ('system/data.php');
 require_once ('system/security.php');
 
@@ -52,7 +59,7 @@ $result = get_fragen();
     <div class="container content">
         <div class="row">
             <div class="col-md-12">
-
+<form action="ergebnis.php" method="post">
     <?php
     while($frage = mysqli_fetch_assoc($result)){
         $antworten = get_antworten($frage['f_id']);
@@ -74,7 +81,7 @@ $result = get_fragen();
         while($antwort = mysqli_fetch_assoc($antworten)){
         ?>
                         <div class="radio">
-                        <label><input type="radio" name="optradio">
+                        <label><input type="radio" name="atq<?php echo $frage ['f_id']?>" value="<?php echo $antwort['a_id']?>">
                             <?php echo $antwort['antwort']?>
                         </label>
                         </div>
@@ -91,9 +98,10 @@ $result = get_fragen();
                     <!--Buttons-->
                     <div class="col-md-12" style="padding-top:10%;">
                         <div class="col-md-offset-5 col-md-2">
-                            <a href="ergebnis.php"><button  type="button" class="">Weiter</button></a>
+                            <button  type="submit" class="">Weiter</button>
                         </div>
                     </div>
+                    </form>
 
             </div>
         </div>
