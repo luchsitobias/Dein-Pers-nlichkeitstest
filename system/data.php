@@ -61,7 +61,7 @@
 /* ************************************************************************** */
 
 
-  function get_fragen()
+  function get_fragen($f_id, $frage)
   {
     $sql = "SELECT frage, f_id FROM fragen;";
   }
