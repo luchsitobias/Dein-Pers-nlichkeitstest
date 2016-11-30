@@ -77,22 +77,7 @@ $success_msg = "";
 
                 <!--Titel 1-->
                 <h2>Fragen bearbeiten</h2>
-<?php
-  echo '<table border="1">';
-  while ($zeile = mysqli_fetch_array( $db, ))
-  {
-    echo "<tr>";
-    echo "<td>". $zeile['id'] . "</td>";
-    echo "<td>". $zeile['nachname'] . "</td>";
-    echo "<td>". $zeile['vorname'] . "</td>";
-    echo "<td>". $zeile['akuerzel'] . "</td>";
-    echo "<td>". $zeile['strasse'] . "</td>";
-    echo "<td>". $zeile['plz'] . "</td>";
-    echo "<td>". $zeile['telefon'] . "</td>";
-    echo "</tr>";
-  }
-  echo "</table>";
- ?>
+              <?php echo show_fragen();?>
                 <!--Tabelle-->
                 <table class="table table-bordered ">
                     <thead>

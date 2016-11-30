@@ -73,7 +73,28 @@
   /* *****************************************************************************
   /* fragen_backend.php
   /* ************************************************************************** */
+  function show_fragen()
+  {
+    $db = get_db_connection();
+    $id=array();
+    $frage=array();
+
+    $sql = "SELECT * FROM fragen;";
+
+    while ($row = mysql_fetch_object($db))
+    {
+    array_push($id,$row->f_id);
+    array_push($frage,$row->frage);
+    }
+  }
 
 
+/*
+  function show_fragen()
+  {
+    $sql = "SELECT * FROM fragen;";
+    echo $sql;
+  }
 
+*/
  ?>
