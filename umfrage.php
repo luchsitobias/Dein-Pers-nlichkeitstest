@@ -64,8 +64,6 @@ $result = get_fragen();
                         <h1>FRAGE <?php echo $frage['f_id']?></h1>
                         <p><?php echo $frage['frage']?></p>
 
-
-
                         <!--Antworten-->
                         <div style="padding-top:5%;">
         <?php

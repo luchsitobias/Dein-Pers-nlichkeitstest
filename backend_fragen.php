@@ -77,7 +77,7 @@ $success_msg = "";
 
                 <!--Titel 1-->
                 <h2>Fragen bearbeiten</h2>
-
+              <?php echo show_fragen();?>
                 <!--Tabelle-->
                 <table class="table table-bordered ">
                     <thead>
