@@ -34,9 +34,9 @@
     return $last_id;
   }
 
-  function register($vorname, $nachname, $geburtsdatum, $email)
+  function register($nachname, $vorname, $geburtsdatum, $email)
   {
-    $sql = "INSERT INTO user (vorname, nachname, geburtsdatum, email) VALUES ('$vorname', '$nachname', '$geburtsdatum', '$email');";
+    $sql = "INSERT INTO user (nachname, vorname, geburtsdatum, email) VALUES ('$nachname', '$vorname', '$geburtsdatum', '$email');";
     return get_insert_result($sql);
   }
 
@@ -93,6 +93,13 @@
     $sql = "SELECT * FROM fragen;";
     return get_result($sql);
   }
+
+  function save_fragen($text, $f_id)
+  {
+    $sql = "UPDATE fragen SET frage = '$text' WHERE f_id = $f_id;";
+    return get_result($sql);
+  }
+
 
 
  ?>

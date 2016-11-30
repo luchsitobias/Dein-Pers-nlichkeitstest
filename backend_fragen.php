@@ -15,9 +15,22 @@ $error_msg = "";
 $success = false;
 $success_msg = "";
 
-$result = show_fragen();
+if(isset($_POST['save'])){
+  if (!empty($_POST['text'])) {
+    $text = filter_data($_POST['text']);
+    $f_id = filter_data($_POST['f_id']);
 
- ?>
+    $speichern = save_fragen($text, $f_id);
+    $success = true;
+
+  }else {
+    $error = true;
+    $error_msg .= "Bitte fülle alle Felder aus.<br/>";
+  }
+}
+
+$result = show_fragen();
+?>
 
 <!DOCTYPE html>
 <html lang="de">
@@ -77,155 +90,29 @@ $result = show_fragen();
         <div class="row">
             <div class="col-md-12 tabelle">
 
-                <!--Titel 1-->
-                <h2>Fragen bearbeiten</h2>
+              <!--Titel 1-->
+              <h2>Fragen bearbeiten</h2>
+
+              <table class="table table-bordered ">
               <?php   while($frage = mysqli_fetch_assoc($result)){?>
                         <!--Inputfelder-->
-
-                <table class="table table-bordered ">
-                            <!--Fragen-->
-                            <tr>
-                                <th scope="row">FRAGE <?php echo $frage['f_id']?></th>
-                                <td><p><?php echo $frage['frage']?></p></td>
-                                <td class="breite"><input type="text" placeholder="Text" class="texteingabe"></td>
-                                <td><button>Speichern</button></td>
-                            </tr>
-              <?php } ?>
-        </table>
-                <!--Tabelle-->
-                <table class="table table-bordered ">
-                    <thead>
-                        <tr>
-                            <th>Frage</th>
-                            <th>Neuer Text</th>
-                            <th>Speichern</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Frage 1</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Frage 2</th>
-                            <td class="breite"><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Frage 3</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Frage 4</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Frage 5</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Frage 6</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Frage 7</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Frage 8</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Frage 9</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Frage 10</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                    </tbody>
+                    <!--Fragen-->
+                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                      <tr>
+                        <th style="width:100px;" scope="row">FRAGE <?php echo $frage['f_id']?></th>
+                        <td style="width:750px;"><p><?php echo $frage['frage']?></p></td>
+                        <td style="width:750px;" class="breite">
+                          <input type="hidden" name="f_id" value="<?php echo $frage['f_id']?>">
+                          <input type="text" name="text" placeholder="Text" class="texteingabe">
+                        </td>
+                        <td><input type="submit" name="save" class="" value="Speichern"></td>
+                      </tr>
+                    </form>
+                <?php } ?>
                 </table>
-
-                <!--Titel 2-->
-                <h2 style="padding-top:10%;">Antworten bearbeiten</h2>
-
-                <!--Tabelle Antworten bearbeiten-->
-                <table class="table table-bordered ">
-                    <thead>
-                        <tr>
-                            <th>Antwort</th>
-                            <th>Neuer Text</th>
-                            <th>Speichern</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Antwort 1</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Antwort 2</th>
-                            <td class="breite"><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Antwort 3</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Antwort 4</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Antwort 5</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Antwort 6</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Antwort 7</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Antwort 8</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Antwort 9</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Antwort 10</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-
-
-
+            </div>
         </div>
     </div>
-</div>
 
 
     <!-- jQuery -->
