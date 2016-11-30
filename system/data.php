@@ -81,12 +81,14 @@
     $frage=array();
 
     $sql = "SELECT * FROM fragen;";
+    $result = mysqli_query($sql, $db) or die();
 
-    while ($row = mysql_fetch_object($db))
+    while ($row = mysqli_fetch_object($db))
     {
     array_push($id,$row->f_id);
     array_push($frage,$row->frage);
     }
+    echo $sql;
   }
 
 
