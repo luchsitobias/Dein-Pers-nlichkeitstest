@@ -64,6 +64,7 @@
   function get_fragen($f_id, $frage)
   {
     $sql = "SELECT frage, f_id FROM fragen;";
+    echo $sql;
   }
 
 
