@@ -17,6 +17,19 @@ $success_msg = "";
 
 $result = show_fragen();
 
+if(isset($_POST['save'])){
+  if (!empty($_POST['text'])) {
+    $text = filter_data($_POST['text']);
+    $register_id = register($vorname, $nachname, $geburtsdatum, $email);
+    $success = true;
+
+  }else {
+    $error = true;
+    $error_msg .= "Bitte fülle alle Felder aus.<br/>";
+  }
+}
+
+
  ?>
 
 <!DOCTYPE html>
@@ -88,7 +101,7 @@ $result = show_fragen();
                       <th style="width:100px;" scope="row">FRAGE <?php echo $frage['f_id']?></th>
                       <td style="width:750px;"><p><?php echo $frage['frage']?></p></td>
                       <td style="width:750px;" class="breite"><input type="text" placeholder="Text" class="texteingabe"></td>
-                      <td><button>Speichern</button></td>
+                      <td><input type="submit" name="save" class="" value="Speichern"></td>
                     </tr>
                 <?php } ?>
               </table>
