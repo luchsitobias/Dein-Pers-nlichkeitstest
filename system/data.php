@@ -61,10 +61,9 @@
 /* ************************************************************************** */
 
 
-  function get_fragen($f_id)
+  function get_fragen()
   {
-    $sql = "SELECT * FROM fragen WHERE f_id = $f_id AND frage = '$frage';";
-    return get_result($sql);
+    $sql = "SELECT frage, f_id FROM fragen;"; 
   }
 
 
