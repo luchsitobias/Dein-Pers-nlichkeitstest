@@ -14,20 +14,15 @@ $error_msg = "";
 $success = false;
 $success_msg = "";
 
-if(isset($_POST['start'])){
-  if (!empty($_POST['vorname']) && !empty($_POST['nachname']) && !empty($_POST['geburtsdatum']) && !empty($_POST['email'])) {
-    $vorname = filter_data($_POST['vorname']);
-    $nachname = filter_data($_POST['nachname']);
-    $geburtsdatum = filter_data($_POST['geburtsdatum']);
-    $email = filter_data($_POST['email']);
-    $register_id = register($vorname, $nachname, $geburtsdatum, $email);
+if(isset($_POST['weiter'])){
+  if (!empty($_POST['vorname']) && !empty($_POST['nachname'])) {
+    $user_id = filter_data($_POST['user_id']);
+    $kat_id = filter_data($_POST['kat_id']);
+    $get_ergebnis = return_antworten($user_id, $kat_id);
     //$register_id = mysqli_fetch_assoc($result);
     echo $register_id;
     $success = true;
 
-    session_start();
-    $_SESSION['id'] = $register_id;
-    header("Location:umfrage.php");
   }else {
     $error = true;
     $error_msg .= "Bitte fülle alle Felder aus.<br/>";
@@ -118,7 +113,7 @@ $result = get_fragen();
                     <!--Buttons-->
                     <div class="col-md-12" style="padding-top:10%;">
                         <div class="col-md-offset-5 col-md-2">
-                            <button  type="submit" class="">Weiter</button>
+                            <button  type="submit" name="weiter" class="">Weiter</button>
                         </div>
                     </div>
                     </form>
