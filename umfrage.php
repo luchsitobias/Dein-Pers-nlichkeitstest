@@ -9,8 +9,6 @@ $success_msg = "";
 
 $result = get_fragen();
 
-$answers = return_antworten($kat_id);
-
  ?>
 
 <!DOCTYPE html>
@@ -75,8 +73,8 @@ $answers = return_antworten($kat_id);
         <?php
         while($antwort = mysqli_fetch_assoc($antworten)){
         ?>
-                        <div class="checkbox">
-                        <label><input type="checkbox" name="antwort">
+                        <div class="radio">
+                        <label><input type="radio" name="optradio">
                             <?php echo $antwort['antwort']?>
                         </label>
                         </div>
@@ -88,6 +86,8 @@ $answers = return_antworten($kat_id);
             <?php
             }
             ?>
+
+
                     <!--Buttons-->
                     <div class="col-md-12" style="padding-top:10%;">
                         <div class="col-md-offset-5 col-md-2">
