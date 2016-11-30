@@ -75,8 +75,8 @@ $answers = return_antworten($kat_id);
         <?php
         while($antwort = mysqli_fetch_assoc($antworten)){
         ?>
-                        <div class="radio">
-                        <label><input type="radio" name="optradio">
+                        <div class="checkbox">
+                        <label><input type="checkbox" name="antwort">
                             <?php echo $antwort['antwort']?>
                         </label>
                         </div>
