@@ -125,7 +125,7 @@
   }
 
 
-  function delete_resultat($text, $a_id)
+  function delete_resultat($user_id)
   {
     $sql = "DELETE FROM resultat WHERE user_id = $user_id";
     return get_result($sql);
