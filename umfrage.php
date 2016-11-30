@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+session_start();
 if(!isset($_SESSION['id'])){
   header ("Location:index.php");
 }else{
@@ -81,7 +81,7 @@ $result = get_fragen();
         while($antwort = mysqli_fetch_assoc($antworten)){
         ?>
                         <div class="radio">
-                        <label><input type="radio" name="atq<?php echo $frage ['f_id']?>" value="<?php echo $antwort['a_id']?>">
+                        <label><input type="radio" name="atq<?php echo $frage ['f_id']?>" value="<?php echo $antwort['kat_id']?>">
                             <?php echo $antwort['antwort']?>
                         </label>
                         </div>

@@ -15,8 +15,7 @@ $success = false;
 $success_msg = "";
 
 foreach($_POST as $key => $value){
-  echo "Key: $key ..... Antwort_id: $value<br>";
-  echo "Schreibe in die DB (Tabelle user_antworten) $user_id und $value";
+  echo "Schreibe in die DB (Tabelle user_antworten) $user_id und $value<br>";
 }
 
  ?>
