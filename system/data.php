@@ -85,9 +85,9 @@
     return get_result($sql);
   }
 
-  function save_fragen()
+  function save_fragen($text, $f_id)
   {
-    $sql = "UPDATE fragen SET frage = '$text' WHERE;";
+    $sql = "UPDATE fragen SET frage = '$text' WHERE f_id = $f_id;";
     return get_result($sql);
   }
 

@@ -15,12 +15,12 @@ $error_msg = "";
 $success = false;
 $success_msg = "";
 
-$result = show_fragen();
-
 if(isset($_POST['save'])){
   if (!empty($_POST['text'])) {
     $text = filter_data($_POST['text']);
-    $register_id = register($vorname, $nachname, $geburtsdatum, $email);
+    $f_id = filter_data($_POST['f_id']);
+
+    $speichern = save_fragen($text, $f_id);
     $success = true;
 
   }else {
@@ -29,8 +29,8 @@ if(isset($_POST['save'])){
   }
 }
 
-
- ?>
+$result = show_fragen();
+?>
 
 <!DOCTYPE html>
 <html lang="de">
@@ -92,19 +92,24 @@ if(isset($_POST['save'])){
 
               <!--Titel 1-->
               <h2>Fragen bearbeiten</h2>
-              <?php   while($frage = mysqli_fetch_assoc($result)){?>
-                        <!--Inputfelder-->
 
               <table class="table table-bordered ">
+              <?php   while($frage = mysqli_fetch_assoc($result)){?>
+                        <!--Inputfelder-->
                     <!--Fragen-->
-                    <tr>
-                      <th style="width:100px;" scope="row">FRAGE <?php echo $frage['f_id']?></th>
-                      <td style="width:750px;"><p><?php echo $frage['frage']?></p></td>
-                      <td style="width:750px;" class="breite"><input type="text" placeholder="Text" class="texteingabe"></td>
-                      <td><input type="submit" name="save" class="" value="Speichern"></td>
-                    </tr>
+                    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                      <tr>
+                        <th style="width:100px;" scope="row">FRAGE <?php echo $frage['f_id']?></th>
+                        <td style="width:750px;"><p><?php echo $frage['frage']?></p></td>
+                        <td style="width:750px;" class="breite">
+                          <input type="hidden" name="f_id" value="<?php echo $frage['f_id']?>">
+                          <input type="text" name="text" placeholder="Text" class="texteingabe">
+                        </td>
+                        <td><input type="submit" name="save" class="" value="Speichern"></td>
+                      </tr>
+                    </form>
                 <?php } ?>
-              </table>
+                </table>
             </div>
         </div>
     </div>
