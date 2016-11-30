@@ -72,6 +72,15 @@
     return get_result($sql);
   }
 
+  /* *****************************************************************************
+  /* Antworten umfrage.php zurückschicken
+  /* ************************************************************************** */
+
+  function return_antworten($kat_id)
+  {
+    $sql = "INSERT INTO user_antworten(user_id, a_id) VALUES ('$user_id', '$a_id');";
+    return get_insert_result($sql);
+  }
 
 
 
