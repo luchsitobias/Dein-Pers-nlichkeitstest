@@ -34,9 +34,9 @@
     return $last_id;
   }
 
-  function register($nachname, $vorname, $geburtsdatum, $email)
+  function register($vorname, $nachname, $geburtsdatum, $email)
   {
-    $sql = "INSERT INTO user (nachname, vorname, geburtsdatum, email) VALUES ('$nachname', '$vorname', '$geburtsdatum', '$email');";
+    $sql = "INSERT INTO user (vorname, nachname, geburtsdatum, email) VALUES ('$vorname', '$nachname', '$geburtsdatum', '$email');";
     return get_insert_result($sql);
   }
 
@@ -78,30 +78,12 @@
   /* *****************************************************************************
   /* fragen_backend.php
   /* ************************************************************************** */
-  function show_fragen()
-  {
-    $db = get_db_connection();
-    $id=array();
-    $frage=array();
 
-    $sql = "SELECT * FROM fragen;";
-    $result = mysqli_query($sql, $db) or die();
-
-    while ($row = mysqli_fetch_object($db))
-    {
-    array_push($id,$row->f_id);
-    array_push($frage,$row->frage);
-    }
-    echo $sql;
-  }
-
-
-/*
   function show_fragen()
   {
     $sql = "SELECT * FROM fragen;";
-    echo $sql;
+    return get_result($sql);
   }
 
-*/
+
  ?>

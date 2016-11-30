@@ -15,6 +15,8 @@ $error_msg = "";
 $success = false;
 $success_msg = "";
 
+$result = show_fragen();
+
  ?>
 
 <!DOCTYPE html>
@@ -77,69 +79,20 @@ $success_msg = "";
 
                 <!--Titel 1-->
                 <h2>Fragen bearbeiten</h2>
-              <?php echo show_fragen();?>
-                <!--Tabelle-->
+              <?php   while($frage = mysqli_fetch_assoc($result)){?>
+                        <!--Inputfelder-->
+
                 <table class="table table-bordered ">
-                    <thead>
-                        <tr>
-                            <th>Frage</th>
-                            <th>Neuer Text</th>
-                            <th>Speichern</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Frage 1</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Frage 2</th>
-                            <td class="breite"><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Frage 3</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Frage 4</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Frage 5</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Frage 6</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Frage 7</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Frage 8</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Frage 9</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Frage 10</th>
-                            <td><input type="text" placeholder="Text" class="texteingabe"></td>
-                            <td><button>Speichern</button></td>
-                        </tr>
-                    </tbody>
-                </table>
+                            <!--Fragen-->
+                            <tr>
+                                <th style="width:100px;" scope="row">FRAGE <?php echo $frage['f_id']?></th>
+                                <td style="width:750px;"><p><?php echo $frage['frage']?></p></td>
+                                <td style="width:750px;" class="breite"><input type="text" placeholder="Text" class="texteingabe"></td>
+                                <td><button>Speichern</button></td>
+                            </tr>
+              <?php } ?>
+        </table>
+              
 
                 <!--Titel 2-->
                 <h2 style="padding-top:10%;">Antworten bearbeiten</h2>
