@@ -7,10 +7,11 @@
       return $db;
   }
 
+
   function get_result($sql)
   {
     $db = get_db_connection();
-  //  echo $sql;
+    echo $sql;
     $result = mysqli_query($db, $sql);
     mysqli_close($db);
     return $result;
