@@ -127,8 +127,14 @@
     return get_result($sql);
   }
 
+  /* *****************************************************************************
+  /* ergebnis.php
+  /* ************************************************************************** */
 
-
+  function evaluate($user_id)
+  {
+    $sql = "SELECT COUNT(kat_id) FROM user_antworten WHERE user_id = $user_id;";
+  }
 
 
  ?>

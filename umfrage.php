@@ -22,8 +22,8 @@
     }
 
     $success = true;
-
-    header("Location:ergebnis.php");
+    $result = evaluate($value);
+    //header("Location:ergebnis.php");
   }
 
   $result = get_fragen();
