@@ -14,20 +14,6 @@ $error_msg = "";
 $success = false;
 $success_msg = "";
 
-if(isset($_POST['weiter'])){
-  if (!empty($_POST['vorname']) && !empty($_POST['nachname'])) {
-    $user_id = filter_data($_POST['user_id']);
-    $kat_id = filter_data($_POST['kat_id']);
-    $get_ergebnis = return_antworten($user_id, $kat_id);
-    //$register_id = mysqli_fetch_assoc($result);
-    echo $register_id;
-    $success = true;
-
-  }else {
-    $error = true;
-    $error_msg .= "Bitte fülle alle Felder aus.<br/>";
-  }
-}
 
 $result = get_fragen();
 
@@ -96,7 +82,7 @@ $result = get_fragen();
         while($antwort = mysqli_fetch_assoc($antworten)){
         ?>
                         <div class="radio">
-                        <label><input type="radio" name="atq<?php echo $frage ['f_id']?>" value="<?php echo $antwort['kat_id']?>">
+                        <label><input type="radio" name="atq<?php echo $frage ['f_id']?>" value="<?php echo $antwort['kat_id']?>" required>
                             <?php echo $antwort['antwort']?>
                         </label>
                         </div>
