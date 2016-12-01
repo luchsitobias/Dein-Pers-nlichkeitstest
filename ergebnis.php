@@ -14,9 +14,10 @@ $error_msg = "";
 $success = false;
 $success_msg = "";
 
+$auswerten = evaluate($user_id);
 
-
-
+$fragen = get_fragen();
+$summe = mysqli_num_rows($fragen);
  ?>
 
 <!DOCTYPE html>
@@ -61,10 +62,19 @@ $success_msg = "";
             <div class="col-md-12">
               <div class="col-md-offset-3 col-md-6" style="padding-top:5%;">
                   <h1>Du bist...</h1>
-                  <h2><?php echo $anteil_kat_1?>% BastlerIn </h2>
-                  <h2><?php echo $anteil_kat_2?>% DenkerIn </h2>
-                  <h2><?php echo $anteil_kat_3?>% LogikerIn </h2>
-                  <h2><?php echo $anteil_kat_4?>% MenschenfreundIn </h2>
+                  <?php
+                    $anteile = [];
+
+                    while($kategorie = mysqli_fetch_assoc($auswerten)){
+                      $percentage = (100 * $kategorie['total'] / $summe);
+                      $anteile[] = $percentage;
+                  ?>
+                    <h2><?php echo $percentage . '% ' . $kategorie['bezeichnung'] ?></h2>
+                  <?php
+                    }
+
+                    insert_ergebnis($user_id, $anteile[0], $anteile[1], $anteile[2], $anteile[3]);
+                  ?>
               </div>
             </div>
 

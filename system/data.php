@@ -11,7 +11,7 @@
   function get_result($sql)
   {
     $db = get_db_connection();
-    echo $sql;
+    //echo $sql;
     $result = mysqli_query($db, $sql);
     mysqli_close($db);
     return $result;
@@ -28,7 +28,7 @@
   function get_insert_result($sql)
   {
     $db = get_db_connection();
-    echo $sql;
+    //echo $sql;
     $result = mysqli_query($db, $sql);
     $last_id = mysqli_insert_id($db);
     mysqli_close($db);
@@ -81,7 +81,11 @@
 
   function evaluate($user_id)
   {
-    $sql = "SELECT user_id, kat_id, COUNT(kat_id) FROM `user_antworten` WHERE user_id = $user_id GROUP BY kat_id;";
+    $sql = "SELECT bezeichnung, user_id, kat_id, COUNT(kat_id) as total
+            FROM `user_antworten`
+            RIGHT JOIN Kategorien USING(kat_id)
+            WHERE user_id = $user_id
+            GROUP BY kat_id;";
     return get_result($sql);
   }
 
