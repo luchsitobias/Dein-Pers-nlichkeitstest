@@ -15,7 +15,7 @@ $success = false;
 $success_msg = "";
 
 
-
+$result = get_kategorie($user_id);
 
  ?>
 
