@@ -60,12 +60,9 @@ foreach($_POST as $key => $value){
 
             <!--Ergebnis-->
             <div class="col-md-12">
-              <div class="col-md-offset-3 col-md-6" style="padding-top:5%;">
+              <div class="col-md-offset-3 col-md-6" style="padding-top:20%;">
                   <h1>Du bist...</h1>
-                  <h2>xy% BastlerIn </h2>
-                  <h2>xy% DenkerIn </h2>
-                  <h2>xy% LogikerIn </h2>
-                  <h2>xy% MenschenfreundIn </h2>
+                  <h1>xy% (Ergebniss des Tests) </h1>
               </div>
             </div>
 
