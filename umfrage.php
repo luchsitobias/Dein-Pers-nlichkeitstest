@@ -18,12 +18,9 @@ if(isset($_POST['weiter'])){
     $user_id = filter_data($_POST['user_id']);
     $kat_id = filter_data($_POST['kat_id']);
 
-    $insert = insert_antworten($kat_id, $user_id);
+    $insert = insert_antworten($user_id, $kat_id);
     $success = true;
 
-  }else {
-    $error = true;
-    $error_msg .= "Bitte fülle alle Felder aus.<br/>";
   }
 
 $result = get_fragen();

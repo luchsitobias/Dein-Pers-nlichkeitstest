@@ -75,7 +75,7 @@
   function insert_antworten($user_id, $kat_id)
   {
     $sql = "INSERT INTO user_antworten(user_id, kat_id) VALUES ($user_id, $kat_id);";
-    return get_result();
+    return get_result($sql);
   }
 
   /* *****************************************************************************
