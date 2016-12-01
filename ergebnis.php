@@ -14,9 +14,7 @@ $error_msg = "";
 $success = false;
 $success_msg = "";
 
-foreach($_POST as $key => $value){
-  echo "Schreibe in die DB (Tabelle user_antworten) $user_id und $value<br>";
-}
+
 
  ?>
 
