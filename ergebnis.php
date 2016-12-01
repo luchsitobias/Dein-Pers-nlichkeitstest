@@ -16,9 +16,11 @@ $success_msg = "";
 
 $auswerten = evaluate($user_id);
 
+
 $fragen = get_fragen();
 $summe = mysqli_num_rows($fragen);
- ?>
+
+?>
 
 <!DOCTYPE html>
 <html lang="de">
