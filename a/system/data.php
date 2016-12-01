@@ -56,7 +56,7 @@
 
 
 /* *****************************************************************************
-/*  umfrage.php
+/* Fragen umfrage.php
 /* ************************************************************************** */
 
 
@@ -72,11 +72,16 @@
     return get_result($sql);
   }
 
-  function insert_antworten($user_id, $kat_id)
+  /* *****************************************************************************
+  /* Antworten umfrage.php zurückschicken
+  /* ************************************************************************** */
+
+  function return_antworten($user_id, $kat_id)
   {
-    $sql = "INSERT INTO user_antworten (user_id, kat_id) VALUES ($user_id, $kat_id);";
-    return get_result($sql);
+    $sql = "INSERT INTO user_antworten(user_id, kat_id) VALUES ($user_id, $kat_id);";
+    return get_result();
   }
+
 
   /* *****************************************************************************
   /* backend_fragen.php
@@ -97,7 +102,6 @@
   /* *****************************************************************************
   /* backend_antworten.php
   /* ************************************************************************** */
-
   function show_antworten()
   {
     $sql = "SELECT * FROM antworten;";
@@ -111,7 +115,7 @@
   }
 
   /* *****************************************************************************
-  /* backend_resultate.php
+  /* backend_ergebnis.php
   /* ************************************************************************** */
 
   function show_ergebnis()
