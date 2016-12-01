@@ -1,29 +1,32 @@
 <?php
-session_start();
-if(!isset($_SESSION['id'])){
-  header ("Location:index.php");
-}else{
-  $user_id = $_SESSION['id'];
-}
-
-require_once ('system/data.php');
-require_once ('system/security.php');
-
-$error = false;
-$error_msg = "";
-$success = false;
-$success_msg = "";
-
-if(isset($_POST['weiter'])){
-    $user_id = filter_data($_POST['user_id']);
-    $kat_id = filter_data($_POST['kat_id']);
-
-    $insert = insert_antworten($user_id, $kat_id);
-    $success = true;
-
+  session_start();
+  if(!isset($_SESSION['id'])){
+    header ("Location:index.php");
+  }else{
+    $user_id = $_SESSION['id'];
   }
 
-$result = get_fragen();
+  require_once ('system/data.php');
+  require_once ('system/security.php');
+
+  $error = false;
+  $error_msg = "";
+  $success = false;
+  $success_msg = "";
+
+  if(isset($_POST['weiter'])){
+    foreach($_POST as $name => $value){
+      if ($name != 'weiter') {
+        $insert = insert_antworten($user_id, $value);
+      }
+    }
+
+    $success = true;
+
+    header("Location:ergebnis.php");
+  }
+
+  $result = get_fragen();
 
  ?>
 
@@ -68,7 +71,7 @@ $result = get_fragen();
     <div class="container content">
         <div class="row">
             <div class="col-md-12">
-<form action="ergebnis.php" method="post">
+<form action="umfrage.php" method="post">
     <?php
     while($frage = mysqli_fetch_assoc($result)){
         $antworten = get_antworten($frage['f_id']);
@@ -90,7 +93,7 @@ $result = get_fragen();
         while($antwort = mysqli_fetch_assoc($antworten)){
         ?>
                         <div class="radio">
-                        <label><input type="radio" name="atq<?php echo $frage ['f_id']?>" value="<?php echo $antwort['kat_id']?>" required>
+                        <label><input type="radio" name="kat_id-<?php echo $antwort['f_id']?>" value="<?php echo $antwort['kat_id']?>" required>
                             <?php echo $antwort['antwort']?>
                         </label>
                         </div>
