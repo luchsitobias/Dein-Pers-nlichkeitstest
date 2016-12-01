@@ -78,6 +78,18 @@
     return get_result($sql);
   }
 
+  function evaluate($user_id)
+  {
+    $sql = "SELECT user_id, kat_id, COUNT(kat_id) FROM `user_antworten` WHERE user_id = $user_id GROUP BY kat_id;";
+    return get_result($sql);
+  }
+
+  function insert_ergebnis($user_id, $anteil_kat_1, $anteil_kat_2, $anteil_kat_3, $anteil_kat_4)
+  {
+    $sql = "INSERT INTO resultat (user_id, anteil_kat_1, anteil_kat_2, anteil_kat_3, anteil_kat_4) VALUES ($user_id, $anteil_kat_1, $anteil_kat_2, $anteil_kat_3, $anteil_kat_4);";
+    return get_result($sql);
+  }
+
   /* *****************************************************************************
   /* backend_fragen.php
   /* ************************************************************************** */
@@ -131,10 +143,10 @@
   /* ergebnis.php
   /* ************************************************************************** */
 
-  function evaluate($user_id)
-  {
-    $sql = "SELECT COUNT(kat_id) FROM user_antworten WHERE user_id = $user_id;";
-  }
 
+
+
+
+//SELECT user_id, kat_id, COUNT(kat_id) FROM `user_antworten` WHERE user_id = 114 GROUP BY kat_id;
 
  ?>

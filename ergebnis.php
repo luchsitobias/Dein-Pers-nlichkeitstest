@@ -61,10 +61,10 @@ $success_msg = "";
             <div class="col-md-12">
               <div class="col-md-offset-3 col-md-6" style="padding-top:5%;">
                   <h1>Du bist...</h1>
-                  <h2>xy% BastlerIn </h2>
-                  <h2>xy% DenkerIn </h2>
-                  <h2>xy% LogikerIn </h2>
-                  <h2>xy% MenschenfreundIn </h2>
+                  <h2><?php echo $anteil_kat_1?>% BastlerIn </h2>
+                  <h2><?php echo $anteil_kat_2?>% DenkerIn </h2>
+                  <h2><?php echo $anteil_kat_3?>% LogikerIn </h2>
+                  <h2><?php echo $anteil_kat_4?>% MenschenfreundIn </h2>
               </div>
             </div>
 

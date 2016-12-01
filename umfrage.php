@@ -21,12 +21,13 @@
       }
     }
 
+    $auswerten = evaluate($user_id);
     $success = true;
-    $result = evaluate($value);
     //header("Location:ergebnis.php");
   }
 
   $result = get_fragen();
+
 
  ?>
 
